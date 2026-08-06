@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Quote, ArrowLeft, ArrowRight, Star } from "lucide-react";
-import { TESTIMONIALS } from "../../data/site";
+import { TESTIMONIALS, CONTACT } from "../../data/site";
 import { MaskLines } from "./Reveal";
 
 export const Testimonials = () => {
@@ -15,7 +15,7 @@ export const Testimonials = () => {
         <div className="flex items-center justify-between mb-12">
           <div>
             <p className="overline !text-sage mb-6">Opiniones de clientes</p>
-            <h2 className="font-serif font-light text-4xl md:text-5xl leading-[1] tracking-tight">
+            <h2 className="font-serif font-light text-5xl md:text-6xl lg:text-7xl leading-[0.98] tracking-tight">
               <MaskLines lines={["Lo que dicen", <em key="e" className="italic text-sage">de nosotros</em>]} />
             </h2>
           </div>
@@ -47,14 +47,33 @@ export const Testimonials = () => {
           </AnimatePresence>
         </div>
 
-        <div className="flex items-center gap-4 mt-12">
+        <div className="flex flex-wrap items-center gap-4 mt-12">
           <button data-testid="testimonial-prev" onClick={() => go(-1)} className="w-12 h-12 rounded-full border border-cream/25 flex items-center justify-center hover:bg-sage hover:border-sage transition-all duration-300" aria-label="Anterior">
             <ArrowLeft size={18} />
           </button>
           <button data-testid="testimonial-next" onClick={() => go(1)} className="w-12 h-12 rounded-full border border-cream/25 flex items-center justify-center hover:bg-sage hover:border-sage transition-all duration-300" aria-label="Siguiente">
             <ArrowRight size={18} />
           </button>
-          <span className="ml-2 text-cream/50 text-sm">{String(i + 1).padStart(2, "0")} / {String(TESTIMONIALS.length).padStart(2, "0")}</span>
+          <span className="ml-1 text-cream/50 text-sm">{String(i + 1).padStart(2, "0")} / {String(TESTIMONIALS.length).padStart(2, "0")}</span>
+
+          <div className="flex flex-wrap gap-3 sm:ml-auto">
+            <a
+              href={CONTACT.googleReviews}
+              target="_blank" rel="noreferrer"
+              data-testid="google-reviews-btn"
+              className="inline-flex items-center gap-2 rounded-full border border-cream/25 px-6 py-3 text-sm hover:bg-cream hover:text-forest transition-all duration-300"
+            >
+              Ver todas en Google
+            </a>
+            <a
+              href={CONTACT.googleWriteReview}
+              target="_blank" rel="noreferrer"
+              data-testid="google-write-btn"
+              className="inline-flex items-center gap-2 rounded-full bg-sage text-cream px-6 py-3 text-sm hover:bg-sage-dark transition-all duration-300"
+            >
+              Deja tu opinión
+            </a>
+          </div>
         </div>
       </div>
     </section>

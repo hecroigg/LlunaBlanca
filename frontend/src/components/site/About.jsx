@@ -26,7 +26,7 @@ export const About = () => (
         {/* Left: heading + images */}
         <div className="lg:col-span-5">
           <p className="overline mb-6">Sobre Lluna Blanca</p>
-          <h2 className="font-serif font-light text-forest text-4xl md:text-5xl leading-[1.05] tracking-tight">
+          <h2 className="font-serif font-light text-forest text-5xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight">
             <MaskLines lines={["El arte de", "cuidar de ti,", <em key="e" className="italic text-sage">sesión a sesión.</em>]} />
           </h2>
 
@@ -52,7 +52,7 @@ export const About = () => (
                 <div className="flex gap-6 md:gap-8">
                   <span className="font-serif text-5xl md:text-6xl font-light text-line leading-none shrink-0">{c.n}</span>
                   <div className="pt-1">
-                    <h3 className="font-serif text-2xl md:text-3xl text-forest mb-3">{c.title}</h3>
+                    <h3 className="font-serif text-3xl md:text-4xl text-forest mb-3">{c.title}</h3>
                     <p className="text-forest/65 leading-relaxed max-w-md">{c.text}</p>
                   </div>
                 </div>

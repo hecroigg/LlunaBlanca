@@ -5,6 +5,7 @@ import { Hero } from "./components/site/Hero";
 import { Marquee } from "./components/site/Marquee";
 import { About } from "./components/site/About";
 import { Services } from "./components/site/Services";
+import { Promos } from "./components/site/Promos";
 import { Gallery } from "./components/site/Gallery";
 import { Testimonials } from "./components/site/Testimonials";
 import { Contact } from "./components/site/Contact";
@@ -22,6 +23,7 @@ function App() {
           <Marquee />
           <About />
           <Services />
+          <Promos />
           <Gallery />
           <Testimonials />
           <Contact />

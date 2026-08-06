@@ -22,7 +22,7 @@ export const Hero = () => {
             Masajes & Bienestar · Blanes, Girona
           </motion.p>
 
-          <h1 className="font-serif font-light text-forest leading-[0.95] text-5xl sm:text-6xl lg:text-7xl tracking-tight">
+          <h1 className="font-serif font-light text-forest leading-[0.95] text-6xl sm:text-7xl lg:text-8xl tracking-tight">
             <MaskLines lines={["Equilibrio,", "relajación y", <em key="e" className="italic text-sage">bienestar.</em>]} delay={0.25} />
           </h1>
 

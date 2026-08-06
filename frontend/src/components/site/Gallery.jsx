@@ -6,7 +6,7 @@ export const Gallery = () => (
     <div className="max-w-7xl mx-auto px-5 md:px-10">
       <div className="mb-14 max-w-2xl">
         <p className="overline mb-6">Galería</p>
-        <h2 className="font-serif font-light text-forest text-4xl md:text-6xl leading-[1] tracking-tight">
+        <h2 className="font-serif font-light text-forest text-5xl md:text-7xl leading-[0.98] tracking-tight">
           <MaskLines lines={["El ambiente lo", <span key="s">dice <em className="italic text-sage">todo</em></span>]} />
         </h2>
         <p className="mt-6 text-forest/60 leading-relaxed">

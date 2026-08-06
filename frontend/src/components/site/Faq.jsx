@@ -9,7 +9,7 @@ export const Faq = () => (
     <div className="max-w-3xl mx-auto px-5 md:px-10">
       <div className="mb-14">
         <p className="overline mb-6">Preguntas frecuentes</p>
-        <h2 className="font-serif font-light text-forest text-4xl md:text-6xl leading-[1] tracking-tight">
+        <h2 className="font-serif font-light text-forest text-5xl md:text-7xl leading-[0.98] tracking-tight">
           <MaskLines lines={["Antes de tu", <em key="e" className="italic text-sage">visita</em>]} />
         </h2>
       </div>

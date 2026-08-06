@@ -10,6 +10,8 @@ export const CONTACT = {
   whatsapp: "https://wa.me/34636604359",
   instagram: "https://www.instagram.com/llunablancablanes/",
   facebook: "",
+  googleReviews: "https://search.google.com/local/reviews?placeid=ChIJ5XfufqYXuxIRUCHCxf_8Mbk",
+  googleWriteReview: "https://search.google.com/local/writereview?placeid=ChIJ5XfufqYXuxIRUCHCxf_8Mbk",
   address: "Carrer de la Fe, 15",
   addressFull: "Carrer de la Fe, 15 · 17300 Blanes, Girona",
   postal: "17300 Blanes, Girona",
@@ -33,8 +35,11 @@ export const PHOTOS = {
   storefront: `${A}/50vufpzf_unnamed-4.jpg`,
 };
 
+export const HERO_IMAGE =
+  "https://images.unsplash.com/photo-1639162906614-0603b0ae95fd?crop=entropy&cs=srgb&fm=jpg&w=1600&q=90";
+
 export const IMAGES = {
-  hero: PHOTOS.massage1,
+  hero: HERO_IMAGE,
   about1: PHOTOS.storefront,
   about2: PHOTOS.room,
   cta: PHOTOS.room,
@@ -115,6 +120,13 @@ export const TESTIMONIALS = [
   { quote: "Encantadoras las personas que están allí y muy profesionales cuando te atienden. Me he sentido como en casa.", author: "Macarena Caparrós", rating: 4, date: "Google · Hace 11 meses" },
   { quote: "Totalmente recomendable. Una paz, y las mejores en todo, trato muy personal.", author: "Valeria García", rating: 5, date: "Google · Hace 3 años" },
   { quote: "Me encanta cómo trabajan, ¡sales como nueva!", author: "Alexandra", rating: 5, date: "Google · Hace 8 meses" },
+];
+
+export const PROMOS = [
+  { title: "Maderoterapia", offer: "5 sesiones + 1 gratis", price: "150 €", note: "Moldeado corporal completo" },
+  { title: "Bono 3 masajes", offer: "Ahorra un 20%", price: "85 €", note: "Antes 105 € · a tu ritmo" },
+  { title: "Pedicura completa", offer: "Cuidado spa de pies", price: "18 €", note: "Promoción del centro" },
+  { title: "Reiki", offer: "Bono de 4 sesiones", price: "100 €", note: "Equilibrio energético" },
 ];
 
 export const FAQS = [
