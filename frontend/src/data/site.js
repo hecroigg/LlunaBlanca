@@ -24,22 +24,28 @@ export const CONTACT = {
     "https://maps.google.com/?daddr=Carrer%20de%20la%20Fe%2C%2015%2C%2017300%20Blanes%2C%20Girona%2C%20Spain",
 };
 
+const A = "https://customer-assets-agu9un31.emergentagent.net/job_bienestar-blanes/artifacts";
+export const PHOTOS = {
+  massage1: `${A}/1f69nl8l_unnamed-10.jpg`,
+  massage2: `${A}/9nv7pkhv_unnamed-11.jpg`,
+  room: `${A}/y9wruam5_unnamed.jpg`,
+  manicure: `${A}/9kp94oc7_unnamed-6.jpg`,
+  storefront: `${A}/50vufpzf_unnamed-4.jpg`,
+};
+
 export const IMAGES = {
-  hero: "https://images.unsplash.com/photo-1639162906614-0603b0ae95fd?crop=entropy&cs=srgb&fm=jpg&w=1400&q=85",
-  about1:
-    "https://images.unsplash.com/photo-1651065213855-e6094f99ee65?crop=entropy&cs=srgb&fm=jpg&w=1100&q=85",
-  about2:
-    "https://images.unsplash.com/photo-1741522509438-a120c0bb5e88?crop=entropy&cs=srgb&fm=jpg&w=1100&q=85",
-  cta: "https://images.unsplash.com/photo-1696841212541-449ca29397cc?crop=entropy&cs=srgb&fm=jpg&w=1400&q=85",
+  hero: PHOTOS.massage1,
+  about1: PHOTOS.storefront,
+  about2: PHOTOS.room,
+  cta: PHOTOS.room,
 };
 
 export const GALLERY = [
-  { src: "https://images.unsplash.com/photo-1700142360825-d21edc53c8db?crop=entropy&cs=srgb&fm=jpg&w=900&q=85", alt: "Sala de tratamiento luminosa", span: "tall" },
-  { src: "https://images.unsplash.com/photo-1696841212541-449ca29397cc?crop=entropy&cs=srgb&fm=jpg&w=900&q=85", alt: "Masaje con piedras calientes" },
-  { src: "https://images.unsplash.com/photo-1745327883508-b6cd32e5dde5?crop=entropy&cs=srgb&fm=jpg&w=900&q=85", alt: "Masaje de espalda" },
-  { src: "https://images.unsplash.com/photo-1630835425197-50feeba99ecd?crop=entropy&cs=srgb&fm=jpg&w=900&q=85", alt: "Ambiente cálido y natural", span: "tall" },
-  { src: "https://images.unsplash.com/photo-1610402601271-5b4bd5b3eba4?crop=entropy&cs=srgb&fm=jpg&w=900&q=85", alt: "Terapia con piedras y flores" },
-  { src: "https://images.unsplash.com/photo-1741522509438-a120c0bb5e88?crop=entropy&cs=srgb&fm=jpg&w=900&q=85", alt: "Masaje con aceites" },
+  { src: PHOTOS.room, alt: "Sala de masaje del centro Lluna Blanca en Blanes" },
+  { src: PHOTOS.storefront, alt: "Fachada de Lluna Blanca en Carrer de la Fe, Blanes", span: "tall" },
+  { src: PHOTOS.massage1, alt: "Masaje descontracturante en Lluna Blanca" },
+  { src: PHOTOS.manicure, alt: "Zona de manicura y estética", span: "tall" },
+  { src: PHOTOS.massage2, alt: "Masaje con aceites en Blanes" },
 ];
 
 // Servicios reales de Lluna Blanca (lista de precios oficial). Edita libremente.
@@ -98,24 +104,17 @@ export const SERVICE_GROUPS = [
 ];
 
 export const TESTIMONIALS = [
-  {
-    quote:
-      "Un trato cercano y muy profesional. Salí completamente renovada después del masaje descontracturante. Repetiré sin duda.",
-    author: "Reseña de cliente",
-    note: "Pega aquí una reseña real de Google / Instagram",
-  },
-  {
-    quote:
-      "El ambiente invita a desconectar desde el primer momento. Cada sesión está pensada para ti. El mejor rincón de bienestar en Blanes.",
-    author: "Reseña de cliente",
-    note: "Pega aquí una reseña real de Google / Instagram",
-  },
-  {
-    quote:
-      "Llevaba tiempo con dolor de espalda y noté la diferencia enseguida. Manos expertas y mucha atención al detalle.",
-    author: "Reseña de cliente",
-    note: "Pega aquí una reseña real de Google / Instagram",
-  },
+  { quote: "Yo salgo siempre como nueva, grandes profesionales. Los masajes en manos de Nuri son algo que recomiendo vaya donde vaya. Si tuviera que dar el máximo de 10, yo le daba un 100. Para mí es indispensable en mi vida.", author: "Carol Moes", rating: 5, date: "Google · Hace 11 meses" },
+  { quote: "Aconsejo este centro porque son profesionales en lo que hacen, trato muy cercano. Me encantó el masaje facial Kobido de Isabel, mi hija está muy contenta con Blanca.", author: "Esperanza Tienda", rating: 5, date: "Google · Hace 11 meses" },
+  { quote: "En Lluna Blanca encuentras un lugar donde hacerte un buen masaje, una reflexología podal y hasta un masaje Kobido, y tratamientos de belleza. Todo en un mismo sitio, con precios accesibles y excelente servicio.", author: "Karina Chiappella", rating: 5, date: "Google · Hace 1 año" },
+  { quote: "¡Tan feliz de haber llegado a este lugar! Nuri y sus manos de ángel. Da igual si te haces una sesión de reiki o un masaje, sales más bonita y con más luz. 10/10, el lugar y las personas que trabajan.", author: "Cintia", rating: 5, date: "Google · Hace 2 años" },
+  { quote: "¡Súper recomendables los masajes descontracturantes! No sé qué haría mi espalda sin las manos de Nuri. Además, las chicas que trabajan en el centro son muy amables y cercanas.", author: "Ana Aguilera", rating: 5, date: "Google · Hace 3 años" },
+  { quote: "Debido a mi artrosis necesito recuperación. Tanto Nuria con sus masajes como Isa con el baño de parafina, voy recuperando poco a poco elasticidad. Estoy muy contenta.", author: "Aqualia Fernández", rating: 5, date: "Google · Hace 3 años" },
+  { quote: "Una maravilla de profesionales, tanto la atención como su trabajo, ¡de 10!", author: "Silvia Rodríguez Jimeno", rating: 5, date: "Google · Hace 1 año" },
+  { quote: "¡Muy buen servicio! He salido como nuevo, sin duda repetiré. 👌", author: "Toni Ollé", rating: 5, date: "Google · Hace 1 año" },
+  { quote: "Encantadoras las personas que están allí y muy profesionales cuando te atienden. Me he sentido como en casa.", author: "Macarena Caparrós", rating: 4, date: "Google · Hace 11 meses" },
+  { quote: "Totalmente recomendable. Una paz, y las mejores en todo, trato muy personal.", author: "Valeria García", rating: 5, date: "Google · Hace 3 años" },
+  { quote: "Me encanta cómo trabajan, ¡sales como nueva!", author: "Alexandra", rating: 5, date: "Google · Hace 8 meses" },
 ];
 
 export const FAQS = [

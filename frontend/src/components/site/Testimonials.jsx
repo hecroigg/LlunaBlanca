@@ -19,12 +19,13 @@ export const Testimonials = () => {
               <MaskLines lines={["Lo que dicen", <em key="e" className="italic text-sage">de nosotros</em>]} />
             </h2>
           </div>
-          <div className="hidden sm:flex gap-0.5 text-sage">
-            {[...Array(5)].map((_, k) => <Star key={k} size={16} fill="currentColor" />)}
+          <div className="hidden sm:flex items-center gap-2 text-sage">
+            <div className="flex gap-0.5">{[...Array(5)].map((_, k) => <Star key={k} size={16} fill="currentColor" />)}</div>
+            <span className="text-cream/60 text-sm ml-1">5,0 en Google</span>
           </div>
         </div>
 
-        <div className="relative min-h-[240px] md:min-h-[200px]">
+        <div className="relative min-h-[260px] md:min-h-[220px]">
           <Quote size={64} className="text-sage/30 mb-6" />
           <AnimatePresence mode="wait">
             <motion.div
@@ -34,11 +35,14 @@ export const Testimonials = () => {
               exit={{ opacity: 0, y: -24 }}
               transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             >
-              <p className="font-serif italic font-light text-2xl md:text-4xl leading-snug text-cream/95">
+              <div className="flex gap-0.5 text-sage mb-5">
+                {[...Array(t.rating)].map((_, k) => <Star key={k} size={16} fill="currentColor" />)}
+              </div>
+              <p className="font-serif italic font-light text-2xl md:text-[2rem] leading-snug text-cream/95">
                 “{t.quote}”
               </p>
-              <p className="mt-8 text-sm uppercase tracking-widest text-cream/60">{t.author}</p>
-              <p className="mt-1 text-xs text-sage/70">{t.note}</p>
+              <p className="mt-8 text-sm uppercase tracking-widest text-cream/85">{t.author}</p>
+              <p className="mt-1 text-xs text-sage/70">{t.date}</p>
             </motion.div>
           </AnimatePresence>
         </div>

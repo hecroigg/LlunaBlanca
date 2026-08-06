@@ -10,7 +10,7 @@ export const Gallery = () => (
           <MaskLines lines={["El ambiente lo", <span key="s">dice <em className="italic text-sage">todo</em></span>]} />
         </h2>
         <p className="mt-6 text-forest/60 leading-relaxed">
-          Un espacio cálido, natural y luminoso pensado para desconectar. Puedes sustituir estas imágenes por fotografías reales del centro.
+          Un espacio cálido, cercano y natural en pleno centro de Blanes, pensado para que desconectes desde que entras por la puerta.
         </p>
       </div>
 
@@ -19,7 +19,7 @@ export const Gallery = () => (
           <Reveal
             key={i}
             delay={(i % 3) * 0.08}
-            className={`overflow-hidden rounded-[2px] group ${g.span === "tall" ? "row-span-2" : ""} ${i === 0 ? "col-span-2 md:col-span-1" : ""}`}
+            className={`overflow-hidden rounded-[2px] group ${g.span === "tall" ? "row-span-2" : ""} ${i === 0 ? "col-span-2 md:col-span-2" : ""}`}
           >
             <div className="w-full h-full overflow-hidden">
               <img
@@ -32,10 +32,6 @@ export const Gallery = () => (
           </Reveal>
         ))}
       </div>
-
-      <p className="mt-8 text-center text-muted text-xs uppercase tracking-widest">
-        📸 Marcador: sube aquí fotografías reales de las salas de Lluna Blanca
-      </p>
     </div>
   </section>
 );
