@@ -1,6 +1,6 @@
 import { Phone, MessageCircle, Instagram, MapPin } from "lucide-react";
 import {
-  Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger,
+  Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger,
 } from "../ui/dialog";
 import { CONTACT } from "../../data/site";
 
@@ -186,6 +186,7 @@ const LegalLink = ({ id }) => {
       <DialogContent className="max-w-lg bg-cream border-line max-h-[80vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="font-serif text-2xl text-forest">{l.title}</DialogTitle>
+          <DialogDescription className="sr-only">Información legal de Lluna Blanca Blanes: {l.title}.</DialogDescription>
         </DialogHeader>
         <p className="text-forest/70 text-sm leading-relaxed whitespace-pre-line">{l.body}</p>
       </DialogContent>
