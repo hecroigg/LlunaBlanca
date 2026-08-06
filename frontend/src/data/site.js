@@ -16,7 +16,7 @@ export const CONTACT = {
   addressFull: "Carrer de la Fe, 15 · 17300 Blanes, Girona",
   postal: "17300 Blanes, Girona",
   hours: [
-    { d: "Lunes – Viernes", h: "9:00 – 13:00" },
+    { d: "Lunes – Viernes", h: "9:00 – 13:00 · 16:30 – 19:30" },
     { d: "Sábado", h: "Cerrado" },
     { d: "Domingo", h: "Cerrado" },
   ],
@@ -134,5 +134,5 @@ export const FAQS = [
   { q: "¿Qué ropa debo llevar?", a: "No necesitas nada especial. Te facilitamos todo lo necesario y podrás desvestirte con total intimidad. Recomendamos ropa cómoda para después de la sesión." },
   { q: "¿Qué masaje me recomendáis?", a: "Depende de lo que busques: el relajante es ideal para desconectar, el descontracturante para aliviar tensión muscular y el drenante o circulatorio para sentir ligereza. Si tienes dudas, te asesoramos antes de empezar." },
   { q: "¿Cuánto dura una sesión?", a: "La mayoría de masajes duran alrededor de 60 minutos. Las terapias específicas y tratamientos faciales varían entre 30 y 75 minutos según el servicio." },
-  { q: "¿Dónde estáis y qué horario tenéis?", a: "Estamos en Carrer de la Fe, 15, en el centro de Blanes (Girona). Abrimos de lunes a viernes de 9:00 a 13:00." },
+  { q: "¿Dónde estáis y qué horario tenéis?", a: "Estamos en Carrer de la Fe, 15, en el centro de Blanes (Girona). Abrimos de lunes a viernes de 9:00 a 13:00 y de 16:30 a 19:30." },
 ];
