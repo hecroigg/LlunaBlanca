@@ -7,27 +7,170 @@ import { CONTACT } from "../../data/site";
 const LEGAL = {
   aviso: {
     title: "Aviso legal",
-    body: `En cumplimiento de la Ley 34/2002 (LSSI-CE), se informa que este sitio web pertenece a Lluna Blanca, centro de masajes y terapias de bienestar situado en Carrer de la Fe, 15, 17300 Blanes (Girona). Teléfono de contacto: 636 604 359.
+    body: `1. Datos identificativos
 
-El acceso y uso de esta web atribuye la condición de usuario y supone la aceptación de las presentes condiciones. Los contenidos, textos e imágenes tienen finalidad informativa; los precios y servicios pueden estar sujetos a modificaciones.
+En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa a los usuarios de este sitio web de los siguientes datos:
 
-[Marcador editable: completa aquí el nombre fiscal, NIF y datos registrales del titular del negocio.]`,
+Titular del sitio web: Nuria Roig Clavijos
+Nombre comercial: Lluna Blanca
+Actividad: Centro de masajes y terapias naturales.
+Dirección: Carrer de la Fe, 15, Blanes (Girona), España.
+Correo electrónico: llunablancablanes@gmail.com
+Teléfono: 636 604 359
+Sitio web: https://www.llunablancablanes.com
+
+2. Objeto
+
+El presente sitio web tiene como finalidad ofrecer información sobre los servicios prestados por Lluna Blanca, así como facilitar el contacto con las personas interesadas mediante teléfono, WhatsApp o, en su caso, redes sociales.
+
+La información publicada tiene carácter meramente informativo y no constituye una oferta contractual.
+
+3. Condiciones de uso
+
+El acceso y navegación por este sitio web atribuye la condición de usuario e implica la aceptación de las presentes condiciones de uso.
+
+El usuario se compromete a utilizar la web de forma adecuada, respetando la legislación vigente, la buena fe y el orden público, absteniéndose de realizar cualquier actuación que pueda perjudicar el funcionamiento del sitio web o los derechos de terceros.
+
+4. Propiedad intelectual e industrial
+
+Todos los contenidos de este sitio web, incluyendo, entre otros, textos, fotografías, imágenes, logotipos, diseños, elementos gráficos y demás materiales, son propiedad de Lluna Blanca o se utilizan con la correspondiente autorización.
+
+Queda prohibida su reproducción, distribución, transformación, comunicación pública o cualquier otro uso sin autorización previa y expresa de la titular, salvo en los casos legalmente permitidos.
+
+5. Responsabilidad
+
+La titular realiza sus mejores esfuerzos para mantener la información del sitio web actualizada y libre de errores. No obstante, no garantiza la ausencia de errores, interrupciones del servicio o incidencias técnicas.
+
+Asimismo, no se responsabiliza del uso que los usuarios hagan de la información contenida en este sitio web.
+
+6. Enlaces externos
+
+Este sitio web puede incluir enlaces a servicios externos, como WhatsApp o Instagram, cuya utilización se regirá por las condiciones de uso y políticas de privacidad de sus respectivos titulares.
+
+Lluna Blanca no se hace responsable del contenido, funcionamiento o políticas de dichos sitios web externos.
+
+7. Protección de datos
+
+El tratamiento de los datos personales de los usuarios se realizará conforme a lo dispuesto en la Política de Privacidad de este sitio web.
+
+8. Legislación aplicable y jurisdicción
+
+El presente Aviso Legal se rige por la legislación española.
+
+Para cualquier controversia que pudiera derivarse del acceso o utilización del sitio web, las partes se someterán a los Juzgados y Tribunales que correspondan conforme a la normativa vigente.`,
   },
   privacidad: {
     title: "Política de privacidad",
-    body: `Los datos que nos facilites (por teléfono, WhatsApp o presencialmente) serán tratados con la única finalidad de gestionar tu cita y atenderte adecuadamente. No cedemos tus datos a terceros salvo obligación legal.
+    body: `1. Responsable del tratamiento
 
-Puedes ejercer tus derechos de acceso, rectificación, supresión y oposición contactando en el teléfono 636 604 359 o en nuestro centro de Blanes.
+En cumplimiento del Reglamento (UE) 2016/679 (Reglamento General de Protección de Datos - RGPD) y de la Ley Orgánica 3/2018, de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD), se informa a los usuarios de este sitio web de que el responsable del tratamiento de los datos personales es:
 
-[Marcador editable: completa aquí el responsable del tratamiento y la dirección de contacto para ejercer derechos, conforme al RGPD (UE 2016/679).]`,
+Titular: Nuria Roig Clavijos
+Nombre comercial: Lluna Blanca
+Actividad: Centro de masajes y terapias naturales.
+Dirección: Carrer de la Fe, 15, Blanes (Girona), España.
+Correo electrónico: llunablancablanes@gmail.com
+Teléfono: 636 604 359
+
+2. Finalidad del tratamiento de los datos
+
+Este sitio web tiene carácter exclusivamente informativo y no dispone de formularios de contacto, registro, reservas ni contratación online.
+
+Los datos personales únicamente serán tratados cuando el usuario contacte voluntariamente con Lluna Blanca a través de alguno de los siguientes medios: correo electrónico, teléfono o WhatsApp.
+
+En estos casos, los datos facilitados serán utilizados únicamente para:
+· Atender consultas o solicitudes de información.
+· Responder a las comunicaciones recibidas.
+· Gestionar citas o servicios solicitados por el usuario.
+· Mantener las comunicaciones necesarias relacionadas con dichos servicios.
+
+No se utilizarán los datos para finalidades distintas sin el consentimiento previo del interesado.
+
+3. Base jurídica del tratamiento
+
+La base legal para el tratamiento de los datos personales es:
+· El consentimiento del interesado al contactar voluntariamente con Lluna Blanca.
+· La aplicación de medidas precontractuales o contractuales cuando la consulta esté relacionada con la prestación de un servicio.
+
+4. Conservación de los datos
+
+Los datos personales se conservarán únicamente durante el tiempo necesario para atender la consulta realizada o mientras exista una relación profesional o comercial entre las partes.
+
+Posteriormente podrán mantenerse bloqueados durante los plazos legalmente establecidos para atender posibles responsabilidades legales.
+
+5. Destinatarios de los datos
+
+Con carácter general, los datos personales no serán comunicados a terceros.
+
+No obstante, podrán ser tratados por proveedores de servicios tecnológicos necesarios para el funcionamiento del correo electrónico, WhatsApp u otros servicios utilizados por Lluna Blanca, siempre bajo las correspondientes garantías legales.
+
+Asimismo, podrán comunicarse cuando exista una obligación legal.
+
+6. Derechos de los usuarios
+
+El usuario puede ejercer en cualquier momento los siguientes derechos: acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad de los datos cuando resulte aplicable.
+
+Para ejercer cualquiera de estos derechos podrá enviar una solicitud al correo electrónico: llunablancablanes@gmail.com
+
+La solicitud deberá identificar al interesado e indicar el derecho que desea ejercer.
+
+Si considera que el tratamiento de sus datos no se ajusta a la normativa vigente, podrá presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD).
+
+7. Seguridad de los datos
+
+Lluna Blanca adopta las medidas técnicas y organizativas razonables para proteger los datos personales frente a accesos no autorizados, pérdida, alteración o tratamiento indebido, teniendo en cuenta la naturaleza de los datos tratados.
+
+8. Enlaces a terceros
+
+Este sitio web puede contener enlaces a servicios externos, como WhatsApp o Instagram.
+
+El acceso a dichos servicios se realiza bajo la responsabilidad del usuario y se encuentra sujeto a las políticas de privacidad establecidas por sus respectivos titulares.
+
+Lluna Blanca no se responsabiliza del tratamiento de datos personales realizado por dichos servicios externos.
+
+9. Modificaciones de la presente política
+
+Lluna Blanca podrá actualizar la presente Política de Privacidad cuando resulte necesario para adaptarla a cambios legislativos o al funcionamiento del sitio web.
+
+La versión publicada en cada momento será la que resulte aplicable.`,
   },
   cookies: {
     title: "Política de cookies",
-    body: `Esta web utiliza cookies técnicas necesarias para su correcto funcionamiento y, en su caso, servicios de terceros como el mapa de Google Maps que pueden instalar cookies propias.
+    body: `1. ¿Qué son las cookies?
 
-Puedes configurar o rechazar las cookies desde tu navegador en cualquier momento. Al continuar navegando aceptas el uso de las cookies estrictamente necesarias.
+Las cookies son pequeños archivos de texto que se almacenan en el dispositivo del usuario al visitar un sitio web. Su finalidad es permitir el correcto funcionamiento de la página, mejorar la experiencia de navegación y, en algunos casos, obtener información estadística sobre el uso del sitio web.
 
-[Marcador editable: si añades analítica o marketing, detalla aquí las cookies utilizadas y su finalidad.]`,
+2. ¿Qué tipos de cookies utiliza este sitio web?
+
+El sitio web de Lluna Blanca utiliza únicamente las cookies necesarias para su funcionamiento y, en su caso, las derivadas de servicios de terceros que el usuario decida utilizar.
+
+a) Cookies técnicas o necesarias
+
+Son aquellas imprescindibles para que la página web funcione correctamente y para garantizar la seguridad de la navegación. Estas cookies no requieren el consentimiento del usuario, ya que son necesarias para prestar el servicio solicitado.
+
+b) Cookies de terceros
+
+Este sitio web puede incluir enlaces o accesos a servicios externos, como WhatsApp o Instagram.
+
+Al acceder a estos servicios, el usuario abandona el sitio web o interactúa con plataformas gestionadas por terceros, que pueden instalar sus propias cookies conforme a sus respectivas políticas de privacidad y de cookies.
+
+Lluna Blanca no controla ni es responsable del uso que dichos terceros hagan de las cookies o de la información recopilada.
+
+3. Cookies analíticas y publicitarias
+
+Actualmente este sitio web no utiliza cookies analíticas, publicitarias ni de personalización propias.
+
+En caso de incorporar en el futuro herramientas como Google Analytics, Meta Pixel u otros servicios similares, esta Política de Cookies será actualizada y se solicitará el consentimiento correspondiente cuando sea legalmente exigible.
+
+4. Gestión de las cookies
+
+El usuario puede permitir, bloquear o eliminar las cookies instaladas en su dispositivo mediante la configuración de su navegador. La desactivación de determinadas cookies puede afectar al correcto funcionamiento de algunas funcionalidades del sitio web.
+
+Puede consultar la información de gestión de cookies en los principales navegadores: Google Chrome, Mozilla Firefox, Microsoft Edge, Safari y Opera.
+
+5. Actualización de la Política de Cookies
+
+La presente Política de Cookies podrá modificarse cuando resulte necesario para adaptarse a cambios normativos, técnicos o derivados del funcionamiento del sitio web. Se recomienda revisar periódicamente esta política para conocer cualquier actualización.`,
   },
 };
 
