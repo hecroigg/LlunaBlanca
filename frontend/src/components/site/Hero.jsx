@@ -64,12 +64,12 @@ export const Hero = () => {
         </div>
 
         {/* Right image */}
-        <div className="lg:col-span-6 order-1 lg:order-2">
+        <div className="lg:col-span-5 order-1 lg:order-2 flex justify-center lg:justify-end">
           <motion.div
             initial={{ clipPath: "inset(100% 0 0 0)" }}
             animate={{ clipPath: "inset(0% 0 0 0)" }}
             transition={{ duration: 1.3, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-            className="relative aspect-[4/5] lg:aspect-[3/4] rounded-[2px] overflow-hidden"
+            className="relative w-full max-w-sm aspect-[4/5] lg:aspect-[3/4] rounded-[2px] overflow-hidden"
           >
             <motion.img
               src={IMAGES.hero}

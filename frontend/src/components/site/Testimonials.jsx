@@ -15,7 +15,7 @@ export const Testimonials = () => {
         <div className="flex items-center justify-between mb-12">
           <div>
             <p className="overline !text-sage mb-6">Opiniones de clientes</p>
-            <h2 className="font-serif font-light text-5xl md:text-6xl lg:text-7xl leading-[0.98] tracking-tight">
+            <h2 className="font-serif font-light text-6xl md:text-7xl lg:text-8xl leading-[0.98] tracking-tight">
               <MaskLines lines={["Lo que dicen", <em key="e" className="italic text-sage">de nosotros</em>]} />
             </h2>
           </div>

@@ -22,8 +22,7 @@ export const MaskLines = ({ lines, className = "", delay = 0 }) => (
         <motion.span
           className="block"
           initial={{ y: "110%" }}
-          whileInView={{ y: "0%" }}
-          viewport={{ once: true }}
+          animate={{ y: "0%" }}
           transition={{ duration: 1, delay: delay + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
         >
           {line}

@@ -13,7 +13,7 @@ export const Services = () => {
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14">
           <div>
             <p className="overline mb-6">Servicios & Tarifas</p>
-            <h2 className="font-serif font-light text-forest text-5xl md:text-7xl leading-[0.98] tracking-tight">
+            <h2 className="font-serif font-light text-forest text-6xl md:text-8xl leading-[0.98] tracking-tight">
               <MaskLines lines={["Tratamientos", <span key="s">pensados para <em className="italic text-sage">ti</em></span>]} />
             </h2>
           </div>

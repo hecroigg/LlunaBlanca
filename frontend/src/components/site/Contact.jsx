@@ -9,7 +9,7 @@ export const Contact = () => (
         {/* Info */}
         <div>
           <p className="overline mb-6">Contacto</p>
-          <h2 className="font-serif font-light text-forest text-5xl md:text-7xl leading-[0.98] tracking-tight">
+          <h2 className="font-serif font-light text-forest text-6xl md:text-8xl leading-[0.98] tracking-tight">
             <MaskLines lines={["Reserva tu", <em key="e" className="italic text-sage">momento.</em>]} />
           </h2>
           <p className="mt-6 text-forest/60 leading-relaxed max-w-md">

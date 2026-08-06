@@ -10,7 +10,7 @@ export const Promos = () => (
           <p className="overline !text-sage mb-5 inline-flex items-center gap-2">
             <Sparkles size={14} /> Promociones
           </p>
-          <h2 className="font-serif font-light text-5xl md:text-6xl lg:text-7xl leading-[0.95] tracking-tight">
+          <h2 className="font-serif font-light text-6xl md:text-7xl lg:text-8xl leading-[0.95] tracking-tight">
             Bonos y <em className="italic text-sage">ofertas</em>
           </h2>
         </div>

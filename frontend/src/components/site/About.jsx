@@ -26,7 +26,7 @@ export const About = () => (
         {/* Left: heading + images */}
         <div className="lg:col-span-5">
           <p className="overline mb-6">Sobre Lluna Blanca</p>
-          <h2 className="font-serif font-light text-forest text-5xl md:text-6xl lg:text-7xl leading-[1.02] tracking-tight">
+          <h2 className="font-serif font-light text-forest text-6xl md:text-7xl lg:text-8xl leading-[1.02] tracking-tight">
             <MaskLines lines={["El arte de", "cuidar de ti,", <em key="e" className="italic text-sage">sesión a sesión.</em>]} />
           </h2>
 
