@@ -1,0 +1,13 @@
+{
+  "name": "Lluna Blanca",
+  "short_name": "Lluna Blanca",
+  "description": "Centro de masajes, terapias naturales y estética en Blanes.",
+  "lang": "es",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF9F6",
+  "theme_color": "#FAF9F6",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

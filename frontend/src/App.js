@@ -12,11 +12,28 @@ import { Contact } from "./components/site/Contact";
 import { Faq } from "./components/site/Faq";
 import { Footer } from "./components/site/Footer";
 import { FloatingWhatsapp } from "./components/site/FloatingWhatsapp";
+import { ServicePage } from "./components/site/ServicePage";
+import { SERVICE_PAGES } from "./data/site";
+import { HomeStructuredData } from "./components/site/HomeStructuredData";
 
 function App() {
+  const pathname = window.location.pathname.endsWith("/")
+    ? window.location.pathname
+    : `${window.location.pathname}/`;
+  const servicePage = SERVICE_PAGES[pathname];
+
+  if (servicePage) {
+    return (
+      <ReactLenis root options={{ lerp: 0.08, smoothWheel: true }}>
+        <ServicePage page={servicePage} />
+      </ReactLenis>
+    );
+  }
+
   return (
     <ReactLenis root options={{ lerp: 0.08, smoothWheel: true }}>
       <div className="App bg-cream min-h-screen antialiased">
+        <HomeStructuredData />
         <Navbar />
         <main>
           <Hero />

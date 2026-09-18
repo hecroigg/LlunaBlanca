@@ -19,18 +19,18 @@ export const Hero = () => {
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2, duration: 1 }}
             className="overline mb-6"
           >
-            Masajes & Bienestar · Blanes, Girona
+            Lluna Blanca · Blanes, Girona
           </motion.p>
 
-          <h1 className="font-serif font-light text-forest leading-[0.95] text-6xl sm:text-7xl lg:text-8xl tracking-tight">
-            <MaskLines lines={["Equilibrio,", "relajación y", <em key="e" className="italic text-sage">bienestar.</em>]} delay={0.25} />
+          <h1 className="font-serif font-light text-forest leading-[0.95] text-5xl sm:text-7xl lg:text-8xl tracking-tight">
+            <MaskLines lines={["Masajes y", "terapias naturales", <em key="e" className="italic text-sage">y estética en Blanes.</em>]} delay={0.25} />
           </h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9, duration: 1 }}
             className="mt-8 max-w-md text-forest/70 text-base md:text-lg leading-relaxed"
           >
-            Centro de masajes y terapias naturales en el corazón de Blanes. Cada sesión, cuidada y adaptada a ti para que vuelvas a tu centro.
+            Lluna Blanca es un centro de masajes, terapias naturales, bienestar y estética en Blanes. Nuri e Isa te atienden de forma cercana, profesional y sin prisas.
           </motion.p>
 
           <motion.div
@@ -73,8 +73,12 @@ export const Hero = () => {
           >
             <motion.img
               src={IMAGES.hero}
-              alt="Masaje relajante en Lluna Blanca Blanes"
+              alt="Sesión de masaje relajante en Lluna Blanca, Blanes"
               style={{ y, scale }}
+              width="960"
+              height="1440"
+              fetchPriority="high"
+              decoding="async"
               className="absolute inset-0 w-full h-[112%] object-cover"
             />
           </motion.div>

@@ -21,7 +21,7 @@ export const Testimonials = () => {
           </div>
           <div className="hidden sm:flex items-center gap-2 text-sage">
             <div className="flex gap-0.5">{[...Array(5)].map((_, k) => <Star key={k} size={16} fill="currentColor" />)}</div>
-            <span className="text-cream/60 text-sm ml-1">5,0 en Google</span>
+            <span className="text-cream/60 text-sm ml-1">Opiniones en Google</span>
           </div>
         </div>
 

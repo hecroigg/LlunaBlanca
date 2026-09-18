@@ -26,6 +26,9 @@ export const Gallery = () => (
                 src={g.src}
                 alt={g.alt}
                 loading="lazy"
+                decoding="async"
+                width="900"
+                height={g.span === "tall" ? "1200" : "700"}
                 className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
               />
             </div>

@@ -5,7 +5,7 @@ const CHAPTERS = [
   {
     n: "01",
     title: "Un espacio para reencontrarte",
-    text: "Lluna Blanca nace en Blanes como un rincón dedicado por completo al bienestar. Un centro especializado en masajes y terapias naturales donde el tiempo se ralentiza y el cuerpo, por fin, respira.",
+    text: "Lluna Blanca es un centro de masajes, terapias naturales y estética en Blanes. Un espacio físico en Carrer de la Fe, 15, creado para cuidar de ti con calma.",
   },
   {
     n: "02",
@@ -15,7 +15,7 @@ const CHAPTERS = [
   {
     n: "03",
     title: "Bienestar que perdura",
-    text: "Del masaje descontracturante al reiki, cada terapia busca un mismo objetivo: que salgas más ligera, más presente y en equilibrio. Bienestar real, cuidado hasta el último detalle.",
+    text: "Nuri se ocupa principalmente de los masajes y las terapias de bienestar. Isa está centrada en estética, limpiezas faciales y tratamientos faciales y corporales.",
   },
 ];
 
@@ -33,12 +33,12 @@ export const About = () => (
           <div className="mt-12 grid grid-cols-2 gap-4">
             <Reveal className="col-span-1">
               <div className="aspect-[3/4] overflow-hidden rounded-[2px] group">
-                <img src={IMAGES.about1} alt="Sala del centro Lluna Blanca" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src={IMAGES.about1} alt="Entrada del centro Lluna Blanca en Blanes" width="900" height="1200" loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
               </div>
             </Reveal>
             <Reveal delay={0.15} className="col-span-1 mt-10">
               <div className="aspect-[3/4] overflow-hidden rounded-[2px] group">
-                <img src={IMAGES.about2} alt="Masaje con aceites en Blanes" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                <img src={IMAGES.about2} alt="Sala de tratamientos de Lluna Blanca" width="900" height="1200" loading="lazy" decoding="async" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
               </div>
             </Reveal>
           </div>

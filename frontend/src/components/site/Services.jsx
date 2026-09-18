@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Clock, MessageCircle } from "lucide-react";
+import { ArrowRight, CalendarCheck, MessageCircle } from "lucide-react";
 import { SERVICE_GROUPS, CONTACT } from "../../data/site";
 import { Reveal, MaskLines } from "./Reveal";
 
@@ -18,17 +18,34 @@ export const Services = () => {
             </h2>
           </div>
           <p className="max-w-sm text-forest/60 leading-relaxed">
-            Precios orientativos. Cada sesión se adapta a tus necesidades; consúltanos y te asesoramos sin compromiso.
+            Consulta las tarifas actuales y reserva con cita previa. Si no sabes qué elegir, te asesoramos antes de confirmar.
           </p>
         </div>
+
+        <nav aria-label="Páginas de servicios" className="grid md:grid-cols-3 gap-4 mb-12">
+          <a href="/masajes-blanes/" className="group bg-cream border border-line rounded-[3px] p-6 hover:border-sage transition-colors">
+            <span className="overline">Masajes</span>
+            <span className="mt-3 flex items-center justify-between font-serif text-2xl text-forest">Masajes en Blanes <ArrowRight size={18} className="text-sage group-hover:translate-x-1 transition-transform" /></span>
+          </a>
+          <a href="/estetica-blanes/" className="group bg-cream border border-line rounded-[3px] p-6 hover:border-sage transition-colors">
+            <span className="overline">Facial y corporal</span>
+            <span className="mt-3 flex items-center justify-between font-serif text-2xl text-forest">Estética en Blanes <ArrowRight size={18} className="text-sage group-hover:translate-x-1 transition-transform" /></span>
+          </a>
+          <a href="/terapias-naturales-blanes/" className="group bg-cream border border-line rounded-[3px] p-6 hover:border-sage transition-colors">
+            <span className="overline">Bienestar</span>
+            <span className="mt-3 flex items-center justify-between font-serif text-2xl text-forest">Terapias naturales <ArrowRight size={18} className="text-sage group-hover:translate-x-1 transition-transform" /></span>
+          </a>
+        </nav>
 
         {/* Category tabs */}
         <div className="flex flex-wrap gap-3 mb-12">
           {SERVICE_GROUPS.map((g) => (
             <button
               key={g.id}
+              type="button"
               data-testid={`service-tab-${g.id}`}
               onClick={() => setActive(g.id)}
+              aria-pressed={active === g.id}
               className={`rounded-full px-5 py-2.5 text-sm transition-all duration-300 border ${
                 active === g.id
                   ? "bg-forest text-cream border-forest"
@@ -58,12 +75,12 @@ export const Services = () => {
                 </div>
                 <div className="mt-6 pt-4 border-t border-line flex items-center justify-between">
                   <span className="inline-flex items-center gap-1.5 text-muted text-xs uppercase tracking-widest">
-                    <Clock size={13} /> {s.duration}
+                    <CalendarCheck size={13} /> {s.detail}
                   </span>
                   <a
                     href={CONTACT.whatsapp}
                     target="_blank" rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sage text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    className="inline-flex items-center gap-1.5 text-sage text-sm md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"
                   >
                     Reservar <MessageCircle size={14} />
                   </a>
@@ -71,6 +88,9 @@ export const Services = () => {
               </div>
             ))}
           </div>
+          <a href={group.landing} className="mt-8 inline-flex items-center gap-2 text-forest hover:text-sage transition-colors">
+            Ver información completa <ArrowRight size={16} />
+          </a>
         </Reveal>
       </div>
     </section>

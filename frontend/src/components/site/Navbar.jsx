@@ -13,6 +13,8 @@ const LINKS = [
 export const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const isHome = window.location.pathname === "/";
+  const linkTo = (hash) => `${isHome ? "" : "/"}${hash}`;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -28,7 +30,7 @@ export const Navbar = () => {
       }`}
     >
       <nav className="max-w-7xl mx-auto px-5 md:px-10 flex items-center justify-between">
-        <a href="#top" data-testid="logo-link" className="flex items-baseline gap-2 group">
+        <a href={isHome ? "#top" : "/"} data-testid="logo-link" className="flex items-baseline gap-2 group">
           <span className="font-serif text-2xl md:text-[26px] tracking-tight text-forest">Lluna Blanca</span>
           <span className="overline hidden sm:inline">Blanes</span>
         </a>
@@ -37,7 +39,7 @@ export const Navbar = () => {
           {LINKS.map((l) => (
             <a
               key={l.href}
-              href={l.href}
+              href={linkTo(l.href)}
               data-testid={`nav-${l.label.toLowerCase()}`}
               className="text-sm text-forest/80 hover:text-sage transition-colors duration-300"
             >
@@ -58,7 +60,9 @@ export const Navbar = () => {
             data-testid="menu-toggle"
             onClick={() => setOpen((v) => !v)}
             className="lg:hidden text-forest p-1"
-            aria-label="Menú"
+            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={open}
+            aria-controls="mobile-navigation"
           >
             {open ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -66,9 +70,9 @@ export const Navbar = () => {
       </nav>
 
       {open && (
-        <div data-testid="mobile-menu" className="lg:hidden bg-cream border-t border-line mt-3 px-5 py-6 flex flex-col gap-5">
+        <div id="mobile-navigation" data-testid="mobile-menu" className="lg:hidden bg-cream border-t border-line mt-3 px-5 py-6 flex flex-col gap-5">
           {LINKS.map((l) => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="text-lg font-serif text-forest">
+            <a key={l.href} href={linkTo(l.href)} onClick={() => setOpen(false)} className="text-lg font-serif text-forest">
               {l.label}
             </a>
           ))}
