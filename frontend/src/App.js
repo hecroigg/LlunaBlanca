@@ -1,5 +1,6 @@
 import "./App.css";
 import { ReactLenis } from "lenis/react";
+import { Analytics } from "@vercel/analytics/react";
 import { Navbar } from "./components/site/Navbar";
 import { Hero } from "./components/site/Hero";
 import { Marquee } from "./components/site/Marquee";
@@ -26,6 +27,7 @@ function App() {
     return (
       <ReactLenis root options={{ lerp: 0.08, smoothWheel: true }}>
         <ServicePage page={servicePage} />
+        <Analytics />
       </ReactLenis>
     );
   }
@@ -49,6 +51,7 @@ function App() {
         <Footer />
         <FloatingWhatsapp />
       </div>
+      <Analytics />
     </ReactLenis>
   );
 }
