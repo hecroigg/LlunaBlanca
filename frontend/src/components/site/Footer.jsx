@@ -148,6 +148,8 @@ a) Cookies técnicas o necesarias
 
 Son aquellas imprescindibles para que la página web funcione correctamente y para garantizar la seguridad de la navegación. Estas cookies no requieren el consentimiento del usuario, ya que son necesarias para prestar el servicio solicitado.
 
+Este sitio utiliza la cookie técnica “lluna_cookie_consent” para recordar las preferencias elegidas en el panel de cookies. Se conserva durante un máximo de 12 meses y no se utiliza para identificar al usuario, analizar su navegación ni mostrar publicidad.
+
 b) Cookies de terceros
 
 Este sitio web puede incluir enlaces o accesos a servicios externos, como WhatsApp o Instagram.
@@ -164,7 +166,9 @@ En caso de incorporar en el futuro herramientas como Google Analytics, Meta Pixe
 
 4. Gestión de las cookies
 
-El usuario puede permitir, bloquear o eliminar las cookies instaladas en su dispositivo mediante la configuración de su navegador. La desactivación de determinadas cookies puede afectar al correcto funcionamiento de algunas funcionalidades del sitio web.
+El usuario puede aceptar, rechazar o configurar las categorías opcionales desde el panel de consentimiento. También puede modificar su decisión en cualquier momento mediante el enlace “Gestionar cookies” disponible en el pie de página.
+
+Asimismo, puede bloquear o eliminar las cookies instaladas en su dispositivo mediante la configuración de su navegador. La desactivación de determinadas cookies puede afectar al correcto funcionamiento de algunas funcionalidades del sitio web.
 
 Puede consultar la información de gestión de cookies en los principales navegadores: Google Chrome, Mozilla Firefox, Microsoft Edge, Safari y Opera.
 
@@ -194,6 +198,17 @@ const LegalLink = ({ id }) => {
   );
 };
 
+const CookieSettingsButton = () => (
+  <button
+    type="button"
+    data-testid="manage-cookies"
+    className="text-left text-sm text-cream/55 transition-colors hover:text-cream"
+    onClick={() => window.dispatchEvent(new Event("lluna:open-cookie-settings"))}
+  >
+    Gestionar cookies
+  </button>
+);
+
 export const Footer = () => (
   <footer data-testid="footer" className="bg-forest text-cream pt-20 pb-10">
     <div className="max-w-7xl mx-auto px-5 md:px-10">
@@ -220,6 +235,7 @@ export const Footer = () => (
             <LegalLink id="aviso" />
             <LegalLink id="privacidad" />
             <LegalLink id="cookies" />
+            <CookieSettingsButton />
           </div>
         </div>
       </div>
