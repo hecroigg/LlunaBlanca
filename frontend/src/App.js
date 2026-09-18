@@ -15,6 +15,7 @@ import { FloatingWhatsapp } from "./components/site/FloatingWhatsapp";
 import { ServicePage } from "./components/site/ServicePage";
 import { SERVICE_PAGES } from "./data/site";
 import { HomeStructuredData } from "./components/site/HomeStructuredData";
+import { CookieConsent } from "./components/site/CookieConsent";
 
 function App() {
   const pathname = window.location.pathname.endsWith("/")
@@ -26,6 +27,7 @@ function App() {
     return (
       <ReactLenis root options={{ lerp: 0.08, smoothWheel: true }}>
         <ServicePage page={servicePage} />
+        <CookieConsent />
       </ReactLenis>
     );
   }
@@ -48,6 +50,7 @@ function App() {
         </main>
         <Footer />
         <FloatingWhatsapp />
+        <CookieConsent />
       </div>
     </ReactLenis>
   );
