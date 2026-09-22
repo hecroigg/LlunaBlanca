@@ -5,11 +5,20 @@ const HERO_IMAGE = "/images/masaje-relajante-blanes.webp";
 export const WellnessScene = ({ progress }) => {
   const prefersReducedMotion = useReducedMotion();
 
-  const imageY = useTransform(progress, [0, 1], [0, -10]);
-  const imageScale = useTransform(progress, [0, 1], [1, 1.035]);
-  const handsY = useTransform(progress, [0, 0.45, 1], [0, 7, -2]);
-  const handsX = useTransform(progress, [0, 0.45, 1], [0, -2, 1]);
-  const handsScale = useTransform(progress, [0, 0.45, 1], [1, 0.985, 1]);
+  const imageY = useTransform(progress, [0, 1], [0, -8]);
+  const imageScale = useTransform(progress, [0, 1], [1, 1.02]);
+
+  // Left hand / forearm: moves down the back as the user scrolls.
+  const leftHandY = useTransform(progress, [0, 0.35, 0.72, 1], [0, 18, 34, 10]);
+  const leftHandX = useTransform(progress, [0, 0.45, 1], [0, 3, -1]);
+  const leftHandRotate = useTransform(progress, [0, 0.5, 1], [0, 1.2, 0]);
+  const leftHandScale = useTransform(progress, [0, 0.48, 1], [1, 1.018, 1]);
+
+  // Right hand follows a slightly different path so it feels like kneading rather than camera movement.
+  const rightHandY = useTransform(progress, [0, 0.32, 0.68, 1], [0, 10, 27, 5]);
+  const rightHandX = useTransform(progress, [0, 0.4, 0.8, 1], [0, -4, 2, 0]);
+  const rightHandRotate = useTransform(progress, [0, 0.5, 1], [0, -1.5, 0]);
+  const rightHandScale = useTransform(progress, [0, 0.5, 1], [1, 0.985, 1]);
 
   return (
     <div
@@ -37,34 +46,74 @@ export const WellnessScene = ({ progress }) => {
         />
 
         {!prefersReducedMotion && (
-          <motion.div
-            aria-hidden="true"
-            style={{
-              x: handsX,
-              y: handsY,
-              scale: handsScale,
-              clipPath: "inset(22% 9% 38% 34% round 18px)",
-            }}
-            className="absolute inset-0 pointer-events-none"
-          >
-            <img
-              src={HERO_IMAGE}
-              alt=""
-              width="960"
-              height="1440"
-              decoding="async"
-              draggable="false"
-              className="absolute inset-0 w-full h-full object-cover object-center"
+          <>
+            {/* Left hand and forearm. The feathered mask prevents hard crop edges. */}
+            <motion.div
+              aria-hidden="true"
+              style={{
+                x: leftHandX,
+                y: leftHandY,
+                rotate: leftHandRotate,
+                scale: leftHandScale,
+                WebkitMaskImage:
+                  "radial-gradient(ellipse 24% 34% at 43% 31%, #000 52%, rgba(0,0,0,.92) 68%, transparent 100%)",
+                maskImage:
+                  "radial-gradient(ellipse 24% 34% at 43% 31%, #000 52%, rgba(0,0,0,.92) 68%, transparent 100%)",
+              }}
+              className="absolute -inset-[4%] pointer-events-none will-change-transform"
+            >
+              <img
+                src={HERO_IMAGE}
+                alt=""
+                width="960"
+                height="1440"
+                decoding="async"
+                draggable="false"
+                className="absolute inset-0 w-full h-full object-cover object-center"
+              />
+            </motion.div>
+
+            {/* Right hand / pressure point */}
+            <motion.div
+              aria-hidden="true"
+              style={{
+                x: rightHandX,
+                y: rightHandY,
+                rotate: rightHandRotate,
+                scale: rightHandScale,
+                WebkitMaskImage:
+                  "radial-gradient(ellipse 24% 29% at 67% 27%, #000 50%, rgba(0,0,0,.9) 68%, transparent 100%)",
+                maskImage:
+                  "radial-gradient(ellipse 24% 29% at 67% 27%, #000 50%, rgba(0,0,0,.9) 68%, transparent 100%)",
+              }}
+              className="absolute -inset-[4%] pointer-events-none will-change-transform"
+            >
+              <img
+                src={HERO_IMAGE}
+                alt=""
+                width="960"
+                height="1440"
+                decoding="async"
+                draggable="false"
+                className="absolute inset-0 w-full h-full object-cover object-center"
+              />
+            </motion.div>
+
+            {/* Tiny compression cue on the upper back to make the massage read more clearly. */}
+            <motion.div
+              aria-hidden="true"
+              style={{
+                y: useTransform(progress, [0, 0.5, 1], [0, 4, 0]),
+                scaleY: useTransform(progress, [0, 0.5, 1], [1, 0.985, 1]),
+                opacity: useTransform(progress, [0, 0.5, 1], [0.08, 0.16, 0.08]),
+              }}
+              className="absolute left-[30%] right-[18%] top-[27%] h-[28%] rounded-[50%] bg-forest/10 blur-xl pointer-events-none"
             />
-          </motion.div>
+          </>
         )}
 
         <div className="absolute inset-0 bg-gradient-to-tr from-forest/8 via-transparent to-cream/10 pointer-events-none" />
       </motion.div>
-
-      <div className="absolute left-1/2 -translate-x-1/2 bottom-[2%] rounded-full bg-cream/90 border border-line px-4 py-2 text-[10px] sm:text-[11px] tracking-[0.18em] uppercase text-muted backdrop-blur-sm whitespace-nowrap">
-        Desliza para ver el masaje
-      </div>
     </div>
   );
 };
