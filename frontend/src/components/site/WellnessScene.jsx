@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import {
   motion,
   useMotionValue,
@@ -20,39 +20,44 @@ export const WellnessScene = ({ className = "" }) => {
   const prefersReducedMotion = useReducedMotion();
   const pointerX = useMotionValue(0);
   const pointerY = useMotionValue(0);
-  const springX = useSpring(pointerX, { stiffness: 42, damping: 22, mass: 0.8 });
-  const springY = useSpring(pointerY, { stiffness: 42, damping: 22, mass: 0.8 });
+  const springX = useSpring(pointerX, { stiffness: 55, damping: 20, mass: 0.75 });
+  const springY = useSpring(pointerY, { stiffness: 55, damping: 20, mass: 0.75 });
 
-  const rotateY = useTransform(springX, [-1, 1], [-13, 13]);
-  const rotateX = useTransform(springY, [-1, 1], [10, -10]);
-  const shiftX = useTransform(springX, [-1, 1], [-10, 10]);
-  const shiftY = useTransform(springY, [-1, 1], [-8, 8]);
+  const rotateY = useTransform(springX, [-1, 1], [-7, 7]);
+  const rotateX = useTransform(springY, [-1, 1], [5, -5]);
+  const shiftX = useTransform(springX, [-1, 1], [-5, 5]);
+  const shiftY = useTransform(springY, [-1, 1], [-4, 4]);
 
-  useEffect(() => {
-    const onPointerMove = (event) => {
-      const root = rootRef.current;
-      if (!root) return;
-      const rect = root.getBoundingClientRect();
-      if (!rect.width || !rect.height) return;
+  const handlePointerMove = (event) => {
+    if (prefersReducedMotion || event.pointerType === "touch") return;
+    const root = rootRef.current;
+    if (!root) return;
 
-      const x = ((event.clientX - rect.left) / rect.width - 0.5) * 2;
-      const y = ((event.clientY - rect.top) / rect.height - 0.5) * 2;
-      pointerX.set(Math.max(-1.25, Math.min(1.25, x)));
-      pointerY.set(Math.max(-1.25, Math.min(1.25, y)));
-    };
+    const rect = root.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
 
-    window.addEventListener("pointermove", onPointerMove, { passive: true });
-    return () => window.removeEventListener("pointermove", onPointerMove);
-  }, [pointerX, pointerY]);
+    pointerX.set(((event.clientX - rect.left) / rect.width - 0.5) * 2);
+    pointerY.set(((event.clientY - rect.top) / rect.height - 0.5) * 2);
+  };
 
-  const float = (values, transition) =>
-    prefersReducedMotion ? undefined : { animate: values, transition };
+  const resetPointer = () => {
+    pointerX.set(0);
+    pointerY.set(0);
+  };
+
+  const floating = (values, duration, delay = 0) =>
+    prefersReducedMotion
+      ? undefined
+      : { animate: values, transition: floatTransition(duration, delay) };
 
   return (
     <div
       ref={rootRef}
-      aria-hidden="true"
-      className={`pointer-events-none select-none relative ${className}`}
+      onPointerMove={handlePointerMove}
+      onPointerLeave={resetPointer}
+      role="img"
+      aria-label="Ilustración 3D de una terapeuta realizando un masaje sobre una camilla"
+      className={`relative w-full aspect-[5/4] lg:aspect-[4/5] select-none ${className}`}
       style={{ perspective: "1100px" }}
     >
       <motion.div
@@ -65,120 +70,152 @@ export const WellnessScene = ({ className = "" }) => {
           transformStyle: "preserve-3d",
         }}
       >
-        {/* Main moon */}
+        {/* Quiet organic backdrop — deliberately not a planet/orbit motif */}
         <div
-          className="absolute left-[40%] top-[17%] w-[38%] aspect-square"
-          style={{ transform: "translateZ(95px)", transformStyle: "preserve-3d" }}
+          className="absolute left-[9%] right-[8%] top-[7%] bottom-[9%] rounded-[46%_54%_48%_52%/42%_44%_56%_58%] bg-sand/70"
+          style={{ transform: "translateZ(-55px) rotate(-5deg)" }}
+        />
+        <div
+          className="absolute right-[6%] top-[12%] w-[31%] h-[42%] rounded-[52%_48%_56%_44%/47%_56%_44%_53%] bg-sage/10"
+          style={{ transform: "translateZ(-35px) rotate(11deg)" }}
+        />
+
+        {/* Ground shadow */}
+        <div
+          className="absolute left-[16%] right-[12%] bottom-[9%] h-[8%] rounded-full bg-forest/10 blur-xl"
+          style={{ transform: "translateZ(-25px)" }}
+        />
+
+        {/* Massage table */}
+        <div
+          className="absolute left-[11%] right-[8%] bottom-[25%] h-[22%]"
+          style={{ transform: "translateZ(35px)" }}
         >
           <motion.div
-            className="w-full h-full rounded-full"
-            style={{
-              background:
-                "radial-gradient(circle at 28% 22%, #ffffff 0%, #faf9f6 19%, #f3f2eb 48%, #d8dacd 74%, #9ca895 100%)",
-              boxShadow:
-                "inset -26px -22px 46px rgba(44,53,43,0.16), inset 14px 12px 24px rgba(255,255,255,0.82), 0 28px 70px rgba(44,53,43,0.16)",
-            }}
-            {...float(
-              { y: [-8, 10], rotate: [-2, 3], scale: [0.99, 1.015] },
-              floatTransition(5.8)
-            )}
+            className="absolute inset-x-0 top-0 h-[57%] rounded-[28px] bg-gradient-to-br from-[#ead9c5] via-[#dec5a9] to-[#caa987] shadow-[0_20px_42px_rgba(80,65,50,0.15)]"
+            {...floating({ y: [0, -3] }, 5.2)}
+          >
+            <div className="absolute inset-[7%] rounded-[22px] bg-gradient-to-br from-[#faf7f1] to-[#eee5d8]" />
+          </motion.div>
+          <div className="absolute left-[12%] top-[50%] w-[6%] h-[48%] rounded-full bg-[#a98d72]" />
+          <div className="absolute right-[12%] top-[50%] w-[6%] h-[48%] rounded-full bg-[#a98d72]" />
+        </div>
+
+        {/* Client: head, hair, body and towel */}
+        <div
+          className="absolute left-[16%] bottom-[40%] w-[14%] aspect-square"
+          style={{ transform: "translateZ(78px)" }}
+        >
+          <motion.div
+            className="relative w-full h-full rounded-full bg-gradient-to-br from-[#edc4a1] to-[#cd956f] shadow-[0_10px_20px_rgba(70,48,35,0.12)]"
+            {...floating({ y: [0, -2] }, 4.7, 0.2)}
+          >
+            <div className="absolute -left-[4%] -top-[5%] w-[76%] h-[58%] rounded-[70%_45%_55%_45%] bg-[#51433a] rotate-[-12deg]" />
+          </motion.div>
+        </div>
+
+        <div
+          className="absolute left-[25%] right-[24%] bottom-[41%] h-[12%]"
+          style={{ transform: "translateZ(72px)" }}
+        >
+          <motion.div
+            className="w-full h-full rounded-full bg-gradient-to-r from-[#d6a17b] via-[#e7b890] to-[#d39a74] shadow-[0_10px_25px_rgba(83,55,39,0.1)]"
+            {...floating({ y: [0, -2] }, 5, 0.1)}
           />
         </div>
 
-        {/* Orbital ring */}
         <div
-          className="absolute left-[31%] top-[10%] w-[56%] aspect-square"
-          style={{ transform: "translateZ(55px) rotateX(68deg) rotateZ(-23deg)" }}
+          className="absolute left-[22%] right-[20%] bottom-[34%] h-[11%] rounded-[24px] bg-gradient-to-b from-white to-[#e9e2d7] shadow-[0_7px_18px_rgba(44,53,43,0.06)]"
+          style={{ transform: "translateZ(84px)" }}
+        />
+
+        {/* Therapist head + hair */}
+        <div
+          className="absolute right-[22%] top-[13%] w-[14%] aspect-square"
+          style={{ transform: "translateZ(92px)" }}
         >
           <motion.div
-            className="w-full h-full rounded-full border-[2px] border-sage/75 shadow-[0_0_30px_rgba(122,139,118,0.1)]"
-            {...float({ rotate: [0, 12] }, floatTransition(8.5))}
+            className="relative w-full h-full rounded-full bg-gradient-to-br from-[#efc7a7] to-[#cf9871]"
+            {...floating({ y: [0, -4] }, 4.9, 0.15)}
+          >
+            <div className="absolute -right-[9%] -top-[12%] w-[78%] h-[72%] rounded-full bg-[#4d4037]" />
+            <div className="absolute right-[3%] -top-[22%] w-[36%] aspect-square rounded-full bg-[#4d4037]" />
+          </motion.div>
+        </div>
+
+        {/* Therapist torso */}
+        <div
+          className="absolute right-[18%] top-[27%] w-[24%] h-[31%]"
+          style={{ transform: "translateZ(76px) rotate(7deg)" }}
+        >
+          <motion.div
+            className="w-full h-full rounded-[36%_40%_22%_25%] bg-gradient-to-br from-[#354033] to-forest shadow-[0_18px_32px_rgba(44,53,43,0.15)]"
+            {...floating({ y: [0, -3] }, 5.3, 0.35)}
           />
         </div>
 
-        {/* Inner orbit */}
+        {/* Therapist legs */}
         <div
-          className="absolute left-[34%] top-[13%] w-[50%] aspect-square"
-          style={{ transform: "translateZ(35px) rotateX(72deg) rotateZ(18deg)" }}
+          className="absolute right-[29%] bottom-[18%] w-[8%] h-[26%] rounded-full bg-[#313b30] rotate-[5deg]"
+          style={{ transform: "translateZ(48px)" }}
+        />
+        <div
+          className="absolute right-[18%] bottom-[18%] w-[8%] h-[25%] rounded-full bg-[#394438] -rotate-[7deg]"
+          style={{ transform: "translateZ(44px)" }}
+        />
+
+        {/* Arms reaching towards the back */}
+        <div
+          className="absolute right-[34%] top-[42%] w-[26%] h-[6%] origin-right"
+          style={{ transform: "translateZ(108px) rotate(18deg)" }}
         >
           <motion.div
-            className="w-full h-full rounded-full border border-forest/15"
-            {...float({ rotate: [0, -16] }, floatTransition(11))}
+            className="w-full h-full rounded-full bg-gradient-to-r from-[#d49c76] to-[#ecc3a1]"
+            {...floating({ rotate: [0, -3] }, 3.8)}
+          />
+        </div>
+        <div
+          className="absolute right-[27%] top-[45%] w-[24%] h-[6%] origin-right"
+          style={{ transform: "translateZ(112px) rotate(31deg)" }}
+        >
+          <motion.div
+            className="w-full h-full rounded-full bg-gradient-to-r from-[#d49c76] to-[#ecc3a1]"
+            {...floating({ rotate: [0, 3] }, 4.1, 0.15)}
           />
         </div>
 
-        {/* Warm stone */}
+        {/* Hands create the subtle massage animation */}
         <div
-          className="absolute left-[16%] bottom-[16%] w-[24%] aspect-[1.45/1]"
-          style={{ transform: "translateZ(125px) rotateZ(-12deg)" }}
+          className="absolute left-[44%] top-[53%] w-[7%] aspect-square"
+          style={{ transform: "translateZ(123px)" }}
         >
           <motion.div
-            className="w-full h-full rounded-[48%_52%_45%_55%/58%_44%_56%_42%]"
-            style={{
-              background:
-                "radial-gradient(circle at 32% 22%, #caa98f 0%, #a77d5e 35%, #8c6a4f 68%, #684c39 100%)",
-              boxShadow:
-                "inset -18px -14px 28px rgba(44,35,28,0.22), inset 10px 8px 18px rgba(255,239,220,0.34), 0 24px 50px rgba(44,53,43,0.12)",
-            }}
-            {...float(
-              { y: [4, -10], rotate: [-3, 4] },
-              floatTransition(6.6, 0.35)
-            )}
+            className="w-full h-full rounded-full bg-[#e7b894] shadow-[0_5px_12px_rgba(80,53,37,0.12)]"
+            {...floating({ y: [0, 3], scale: [1, 0.96] }, 2.4)}
+          />
+        </div>
+        <div
+          className="absolute left-[53%] top-[55%] w-[7%] aspect-square"
+          style={{ transform: "translateZ(126px)" }}
+        >
+          <motion.div
+            className="w-full h-full rounded-full bg-[#e7b894] shadow-[0_5px_12px_rgba(80,53,37,0.12)]"
+            {...floating({ y: [3, 0], scale: [0.96, 1] }, 2.4, 0.2)}
           />
         </div>
 
-        {/* Sage pebble */}
+        {/* Minimal botanical accents for the Lluna Blanca visual language */}
         <div
-          className="absolute right-[8%] bottom-[12%] w-[18%] aspect-[0.9/1.15]"
-          style={{ transform: "translateZ(145px) rotateZ(12deg)" }}
-        >
-          <motion.div
-            className="w-full h-full rounded-[54%_46%_52%_48%/43%_56%_44%_57%]"
-            style={{
-              background:
-                "radial-gradient(circle at 30% 22%, #b8c2b4 0%, #8fa08a 36%, #7a8b76 68%, #586954 100%)",
-              boxShadow:
-                "inset -15px -16px 25px rgba(44,53,43,0.18), inset 9px 8px 16px rgba(255,255,255,0.28), 0 22px 45px rgba(44,53,43,0.12)",
-            }}
-            {...float(
-              { y: [-5, 11], rotate: [3, -5] },
-              floatTransition(5.2, 0.8)
-            )}
-          />
-        </div>
-
-        {/* Small floating seed */}
+          className="absolute left-[7%] top-[23%] w-[11%] h-[4%] rounded-full bg-sage/35 -rotate-[28deg]"
+          style={{ transform: "translateZ(18px)" }}
+        />
         <div
-          className="absolute left-[18%] top-[20%] w-[6%] aspect-square"
-          style={{ transform: "translateZ(180px)" }}
-        >
-          <motion.div
-            className="w-full h-full rounded-full bg-forest shadow-[0_12px_30px_rgba(44,53,43,0.2)]"
-            {...float(
-              { y: [-7, 9], x: [-3, 4], scale: [0.94, 1.04] },
-              floatTransition(4.8, 0.15)
-            )}
-          />
-        </div>
-
-        {/* Pale floating seed */}
+          className="absolute left-[11%] top-[18%] w-[9%] h-[3.5%] rounded-full bg-sage/20 rotate-[31deg]"
+          style={{ transform: "translateZ(14px)" }}
+        />
         <div
-          className="absolute right-[13%] top-[22%] w-[4.5%] aspect-square"
-          style={{ transform: "translateZ(155px)" }}
-        >
-          <motion.div
-            className="w-full h-full rounded-full bg-sand border border-forest/10 shadow-[0_10px_25px_rgba(44,53,43,0.1)]"
-            {...float(
-              { y: [5, -8], x: [2, -3] },
-              floatTransition(5.7, 0.55)
-            )}
-          />
-        </div>
-
-        {/* Soft depth shadows */}
-        <div
-          className="absolute left-[32%] bottom-[7%] w-[46%] h-[11%] rounded-full bg-forest/10 blur-2xl"
-          style={{ transform: "translateZ(-70px) rotateX(72deg)" }}
+          className="absolute right-[5%] bottom-[28%] w-[12%] h-[4%] rounded-full bg-wood/20 rotate-[24deg]"
+          style={{ transform: "translateZ(12px)" }}
         />
       </motion.div>
     </div>
