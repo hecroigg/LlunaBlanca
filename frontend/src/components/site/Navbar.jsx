@@ -44,9 +44,19 @@ export const Navbar = () => {
       }`}
     >
       <nav className="max-w-7xl mx-auto px-5 md:px-10 flex items-center justify-between gap-3">
-        <a href={isHome ? "#top" : "/"} data-testid="logo-link" className="flex items-baseline gap-2 group min-w-0">
-          <span className="font-serif text-2xl md:text-[26px] tracking-tight text-forest whitespace-nowrap">Lluna Blanca</span>
-          <span className="overline hidden sm:inline">Blanes</span>
+        <a href={isHome ? "#top" : "/"} data-testid="logo-link" className="flex items-center gap-2.5 group min-w-0">
+          <img
+            src="/images/logo-lluna-blanca.webp"
+            alt="Logo de Lluna Blanca"
+            width="40"
+            height="40"
+            className="h-9 w-9 md:h-10 md:w-10 shrink-0 rounded-full object-cover border border-line/80 shadow-sm"
+            decoding="async"
+          />
+          <span className="flex items-baseline gap-2 min-w-0">
+            <span className="font-serif text-xl sm:text-2xl md:text-[26px] tracking-tight text-forest whitespace-nowrap">Lluna Blanca</span>
+            <span className="overline hidden sm:inline">Blanes</span>
+          </span>
         </a>
 
         <div className="hidden lg:flex items-center gap-8 xl:gap-9">
