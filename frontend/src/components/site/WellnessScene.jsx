@@ -5,24 +5,23 @@ const HERO_IMAGE = "/images/masaje-relajante-blanes.webp";
 export const WellnessScene = ({ progress }) => {
   const prefersReducedMotion = useReducedMotion();
 
-  const imageY = useTransform(progress, [0, 1], [0, -8]);
-  const imageScale = useTransform(progress, [0, 1], [1, 1.02]);
+  const imageY = useTransform(progress, [0, 0.4], [0, -10]);
+  const imageScale = useTransform(progress, [0, 0.4], [1, 1.025]);
 
-  // Left hand / forearm: moves down the back as the user scrolls.
-  const leftHandY = useTransform(progress, [0, 0.35, 0.72, 1], [0, 18, 34, 10]);
-  const leftHandX = useTransform(progress, [0, 0.45, 1], [0, 3, -1]);
-  const leftHandRotate = useTransform(progress, [0, 0.5, 1], [0, 1.2, 0]);
-  const leftHandScale = useTransform(progress, [0, 0.48, 1], [1, 1.018, 1]);
+  // Make the massage action happen early enough to be clearly visible on mobile.
+  const leftHandY = useTransform(progress, [0, 0.08, 0.18, 0.32, 0.5], [0, 26, 58, 82, 22]);
+  const leftHandX = useTransform(progress, [0, 0.12, 0.25, 0.5], [0, 7, -4, 0]);
+  const leftHandRotate = useTransform(progress, [0, 0.18, 0.34, 0.5], [0, 2.8, 4.2, 0]);
+  const leftHandScale = useTransform(progress, [0, 0.18, 0.34, 0.5], [1, 1.035, 0.985, 1]);
 
-  // Right hand follows a slightly different path so it feels like kneading rather than camera movement.
-  const rightHandY = useTransform(progress, [0, 0.32, 0.68, 1], [0, 10, 27, 5]);
-  const rightHandX = useTransform(progress, [0, 0.4, 0.8, 1], [0, -4, 2, 0]);
-  const rightHandRotate = useTransform(progress, [0, 0.5, 1], [0, -1.5, 0]);
-  const rightHandScale = useTransform(progress, [0, 0.5, 1], [1, 0.985, 1]);
+  const rightHandY = useTransform(progress, [0, 0.08, 0.18, 0.32, 0.5], [0, 16, 42, 68, 12]);
+  const rightHandX = useTransform(progress, [0, 0.1, 0.24, 0.5], [0, -8, 5, 0]);
+  const rightHandRotate = useTransform(progress, [0, 0.18, 0.34, 0.5], [0, -3.2, -4.8, 0]);
+  const rightHandScale = useTransform(progress, [0, 0.18, 0.34, 0.5], [1, 0.97, 1.03, 1]);
 
-  const backPressY = useTransform(progress, [0, 0.5, 1], [0, 4, 0]);
-  const backPressScale = useTransform(progress, [0, 0.5, 1], [1, 0.985, 1]);
-  const backPressOpacity = useTransform(progress, [0, 0.5, 1], [0.08, 0.16, 0.08]);
+  const backPressY = useTransform(progress, [0, 0.18, 0.34, 0.5], [0, 9, 17, 0]);
+  const backPressScale = useTransform(progress, [0, 0.18, 0.34, 0.5], [1, 0.94, 0.9, 1]);
+  const backPressOpacity = useTransform(progress, [0, 0.18, 0.34, 0.5], [0.05, 0.19, 0.25, 0.05]);
 
   return (
     <div
@@ -51,7 +50,6 @@ export const WellnessScene = ({ progress }) => {
 
         {!prefersReducedMotion && (
           <>
-            {/* Left hand and forearm. Feathered masking avoids hard crop edges. */}
             <motion.div
               aria-hidden="true"
               style={{
@@ -60,11 +58,11 @@ export const WellnessScene = ({ progress }) => {
                 rotate: leftHandRotate,
                 scale: leftHandScale,
                 WebkitMaskImage:
-                  "radial-gradient(ellipse 24% 34% at 43% 31%, #000 52%, rgba(0,0,0,.92) 68%, transparent 100%)",
+                  "radial-gradient(ellipse 27% 38% at 43% 31%, #000 52%, rgba(0,0,0,.94) 68%, transparent 100%)",
                 maskImage:
-                  "radial-gradient(ellipse 24% 34% at 43% 31%, #000 52%, rgba(0,0,0,.92) 68%, transparent 100%)",
+                  "radial-gradient(ellipse 27% 38% at 43% 31%, #000 52%, rgba(0,0,0,.94) 68%, transparent 100%)",
               }}
-              className="absolute -inset-[4%] pointer-events-none will-change-transform"
+              className="absolute -inset-[5%] pointer-events-none will-change-transform"
             >
               <img
                 src={HERO_IMAGE}
@@ -77,7 +75,6 @@ export const WellnessScene = ({ progress }) => {
               />
             </motion.div>
 
-            {/* Right hand / pressure point */}
             <motion.div
               aria-hidden="true"
               style={{
@@ -86,11 +83,11 @@ export const WellnessScene = ({ progress }) => {
                 rotate: rightHandRotate,
                 scale: rightHandScale,
                 WebkitMaskImage:
-                  "radial-gradient(ellipse 24% 29% at 67% 27%, #000 50%, rgba(0,0,0,.9) 68%, transparent 100%)",
+                  "radial-gradient(ellipse 27% 34% at 67% 27%, #000 50%, rgba(0,0,0,.92) 68%, transparent 100%)",
                 maskImage:
-                  "radial-gradient(ellipse 24% 29% at 67% 27%, #000 50%, rgba(0,0,0,.9) 68%, transparent 100%)",
+                  "radial-gradient(ellipse 27% 34% at 67% 27%, #000 50%, rgba(0,0,0,.92) 68%, transparent 100%)",
               }}
-              className="absolute -inset-[4%] pointer-events-none will-change-transform"
+              className="absolute -inset-[5%] pointer-events-none will-change-transform"
             >
               <img
                 src={HERO_IMAGE}
@@ -103,11 +100,10 @@ export const WellnessScene = ({ progress }) => {
               />
             </motion.div>
 
-            {/* Subtle pressure cue on the upper back. */}
             <motion.div
               aria-hidden="true"
               style={{ y: backPressY, scaleY: backPressScale, opacity: backPressOpacity }}
-              className="absolute left-[30%] right-[18%] top-[27%] h-[28%] rounded-[50%] bg-forest/10 blur-xl pointer-events-none"
+              className="absolute left-[27%] right-[15%] top-[25%] h-[31%] rounded-[50%] bg-forest/10 blur-xl pointer-events-none"
             />
           </>
         )}
