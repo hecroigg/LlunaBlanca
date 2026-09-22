@@ -1,41 +1,53 @@
-import { motion, useReducedMotion, useSpring, useTransform } from "framer-motion";
+import { useEffect, useState } from "react";
+import { useMotionValueEvent, useReducedMotion } from "framer-motion";
 
-const HERO_IMAGE = "/images/masaje-relajante-blanes.webp";
+const FRAMES = [
+  "/images/massage-frame-1.webp",
+  "/images/massage-frame-2.webp",
+  "/images/massage-frame-3.webp",
+];
+
+const frameForProgress = (value) => {
+  // One complete massage stroke while the hero leaves the viewport:
+  // shoulders -> mid back -> lower position -> mid back -> shoulders.
+  if (value < 0.12) return 0;
+  if (value < 0.28) return 1;
+  if (value < 0.46) return 2;
+  if (value < 0.64) return 1;
+  return 0;
+};
 
 export const WellnessScene = ({ progress }) => {
   const prefersReducedMotion = useReducedMotion();
+  const [frame, setFrame] = useState(0);
 
-  // Smooth the scroll signal before applying it to the image. This avoids the
-  // stepped feeling that was especially visible on touch devices.
-  const smoothProgress = useSpring(progress, {
-    stiffness: 92,
-    damping: 28,
-    mass: 0.24,
-    restDelta: 0.001,
+  // Frames 2 and 3 are tiny optimized WebPs. Warm them into the browser cache
+  // so changing frame never waits on the network while the user is scrolling.
+  useEffect(() => {
+    if (typeof window === "undefined") return undefined;
+
+    const preload = () => {
+      FRAMES.slice(1).forEach((src) => {
+        const image = new Image();
+        image.decoding = "async";
+        image.src = src;
+      });
+    };
+
+    if ("requestIdleCallback" in window) {
+      const id = window.requestIdleCallback(preload, { timeout: 800 });
+      return () => window.cancelIdleCallback?.(id);
+    }
+
+    const id = window.setTimeout(preload, 120);
+    return () => window.clearTimeout(id);
+  }, []);
+
+  useMotionValueEvent(progress, "change", (latest) => {
+    if (prefersReducedMotion) return;
+    const next = frameForProgress(latest);
+    setFrame((current) => (current === next ? current : next));
   });
-
-  // One feathered moving layer is much cheaper than the previous two masked
-  // hand layers and avoids the visible seams between independent cut-outs.
-  const massageY = useTransform(
-    smoothProgress,
-    [0, 0.09, 0.2, 0.34, 0.52, 0.72],
-    [0, 18, 43, 66, 32, 8]
-  );
-  const massageX = useTransform(
-    smoothProgress,
-    [0, 0.16, 0.34, 0.55, 0.72],
-    [0, -2, 4, -1, 0]
-  );
-  const massageRotate = useTransform(
-    smoothProgress,
-    [0, 0.2, 0.38, 0.6, 0.72],
-    [0, 0.8, -0.7, 0.35, 0]
-  );
-  const massageScale = useTransform(
-    smoothProgress,
-    [0, 0.2, 0.38, 0.6, 0.72],
-    [1, 1.012, 0.992, 1.006, 1]
-  );
 
   return (
     <div
@@ -45,50 +57,19 @@ export const WellnessScene = ({ progress }) => {
     >
       <div className="absolute inset-[3%] rounded-[34px] bg-gradient-to-b from-white to-sand border border-line/70 shadow-[0_24px_56px_rgba(44,53,43,0.06)]" />
 
-      <div className="absolute inset-[6%] overflow-hidden rounded-[28px] bg-cream [transform:translateZ(0)]">
+      <div className="absolute inset-[6%] overflow-hidden rounded-[28px] bg-cream">
         <img
-          src={HERO_IMAGE}
+          key={prefersReducedMotion ? FRAMES[0] : FRAMES[frame]}
+          src={prefersReducedMotion ? FRAMES[0] : FRAMES[frame]}
           alt="Sesión de masaje relajante en Lluna Blanca, Blanes"
-          width="960"
-          height="1440"
+          width="320"
+          height="400"
           loading="eager"
           fetchPriority="high"
           decoding="async"
           draggable="false"
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          className="absolute inset-0 w-full h-full object-cover object-center select-none"
         />
-
-        {!prefersReducedMotion && (
-          <motion.div
-            aria-hidden="true"
-            style={{
-              x: massageX,
-              y: massageY,
-              rotate: massageRotate,
-              scale: massageScale,
-              transformOrigin: "54% 31%",
-              WebkitMaskImage:
-                "radial-gradient(ellipse 56% 43% at 54% 30%, #000 0%, #000 38%, rgba(0,0,0,.9) 53%, rgba(0,0,0,.6) 66%, rgba(0,0,0,.25) 80%, transparent 100%)",
-              maskImage:
-                "radial-gradient(ellipse 56% 43% at 54% 30%, #000 0%, #000 38%, rgba(0,0,0,.9) 53%, rgba(0,0,0,.6) 66%, rgba(0,0,0,.25) 80%, transparent 100%)",
-              backfaceVisibility: "hidden",
-              WebkitBackfaceVisibility: "hidden",
-            }}
-            className="absolute inset-0 pointer-events-none will-change-transform [transform:translateZ(0)]"
-          >
-            <img
-              src={HERO_IMAGE}
-              alt=""
-              width="960"
-              height="1440"
-              decoding="async"
-              draggable="false"
-              className="absolute inset-0 w-full h-full object-cover object-center"
-            />
-          </motion.div>
-        )}
-
-        <div className="absolute inset-0 bg-gradient-to-tr from-forest/[0.045] via-transparent to-cream/[0.035] pointer-events-none" />
       </div>
     </div>
   );
