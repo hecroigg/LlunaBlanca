@@ -1,16 +1,27 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { motion, useScroll } from "framer-motion";
 import { Phone, MessageCircle, ArrowDownRight } from "lucide-react";
 import { CONTACT } from "../../data/site";
 import { MaskLines } from "./Reveal";
 import { WellnessScene } from "./WellnessScene";
+import { useLanguage } from "../../context/LanguageContext";
 
 export const Hero = () => {
   const ref = useRef(null);
+  const { language, copy } = useLanguage();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start start", "end start"],
   });
+
+  useEffect(() => {
+    const titles = {
+      es: "Masajes, terapias naturales y estética en Blanes | Lluna Blanca",
+      ca: "Massatges, teràpies naturals i estètica a Blanes | Lluna Blanca",
+      en: "Massage, natural therapies and beauty in Blanes | Lluna Blanca",
+    };
+    document.title = titles[language];
+  }, [language]);
 
   return (
     <section
@@ -32,27 +43,28 @@ export const Hero = () => {
             transition={{ delay: 0.12, duration: 0.65 }}
             className="overline mb-5 sm:mb-6"
           >
-            Lluna Blanca · Blanes, Girona
+            {copy.hero.eyebrow}
           </motion.p>
 
           <h1 className="font-serif font-light text-forest leading-[0.94] text-[3.3rem] sm:text-7xl lg:text-8xl tracking-tight">
             <MaskLines
               lines={[
-                "Masajes y",
-                "terapias naturales",
-                <em key="e" className="italic text-sage">y estética en Blanes.</em>,
+                copy.hero.lines[0],
+                copy.hero.lines[1],
+                <em key={`${language}-hero-em`} className="italic text-sage">{copy.hero.lines[2]}</em>,
               ]}
               delay={0.18}
             />
           </h1>
 
           <motion.p
+            key={`${language}-description`}
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.55, duration: 0.75 }}
+            transition={{ delay: 0.15, duration: 0.6 }}
             className="mt-6 sm:mt-8 max-w-md text-forest/70 text-[15px] sm:text-base md:text-lg leading-relaxed"
           >
-            Lluna Blanca es un centro de masajes, terapias naturales, bienestar y estética en Blanes. Nuri e Isa te atienden de forma cercana, profesional y sin prisas.
+            {copy.hero.description}
           </motion.p>
 
           <motion.div
@@ -66,7 +78,7 @@ export const Hero = () => {
               data-testid="hero-call-btn"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full bg-forest text-cream px-7 py-4 text-sm hover:bg-sage hover:-translate-y-0.5 transition-all duration-300"
             >
-              <Phone size={17} /> Llamar ahora
+              <Phone size={17} /> {copy.hero.call}
             </a>
             <a
               href={CONTACT.whatsapp}
@@ -75,7 +87,7 @@ export const Hero = () => {
               data-testid="hero-whatsapp-btn"
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full border border-forest/20 text-forest px-7 py-4 text-sm hover:border-whatsapp hover:text-whatsapp hover:-translate-y-0.5 transition-all duration-300"
             >
-              <MessageCircle size={17} /> Contactar por WhatsApp
+              <MessageCircle size={17} /> {copy.hero.whatsapp}
             </a>
           </motion.div>
 
@@ -86,7 +98,7 @@ export const Hero = () => {
             className="mt-9 sm:mt-12 flex items-center gap-3 text-muted text-sm"
           >
             <ArrowDownRight size={18} className="text-sage" />
-            <span>{CONTACT.tagline}</span>
+            <span>{copy.hero.tagline}</span>
           </motion.div>
         </div>
 
