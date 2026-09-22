@@ -1,13 +1,21 @@
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll } from "framer-motion";
 import { Phone, MessageCircle, ArrowDownRight } from "lucide-react";
 import { CONTACT } from "../../data/site";
 import { MaskLines } from "./Reveal";
 import { WellnessScene } from "./WellnessScene";
 
 export const Hero = () => {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+
   return (
     <section
       id="top"
+      ref={ref}
       data-testid="hero"
       className="relative min-h-[100svh] overflow-hidden pt-24 sm:pt-28 lg:pt-32 pb-14 sm:pb-16"
     >
@@ -17,7 +25,6 @@ export const Hero = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-10 grid lg:grid-cols-12 gap-6 sm:gap-9 lg:gap-12 items-center min-h-[calc(100svh-7rem)]">
-        {/* Copy */}
         <div className="lg:col-span-6 order-2 lg:order-1">
           <motion.p
             initial={{ opacity: 0, y: 8 }}
@@ -83,15 +90,14 @@ export const Hero = () => {
           </motion.div>
         </div>
 
-        {/* Lightweight 3D massage illustration. On mobile it replaces the old hero photo entirely. */}
         <div className="lg:col-span-6 order-1 lg:order-2 flex justify-center lg:justify-end items-center">
           <motion.div
-            initial={{ opacity: 0, y: 14, scale: 0.96 }}
+            initial={{ opacity: 0, y: 12, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ delay: 0.1, duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
-            className="w-full max-w-[330px] sm:max-w-[430px] lg:max-w-[520px]"
+            transition={{ delay: 0.08, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="w-full max-w-[330px] sm:max-w-[430px] lg:max-w-[540px]"
           >
-            <WellnessScene />
+            <WellnessScene progress={scrollYProgress} />
           </motion.div>
         </div>
       </div>
