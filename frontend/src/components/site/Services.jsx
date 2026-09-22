@@ -2,42 +2,62 @@ import { useState } from "react";
 import { ArrowRight, CalendarCheck, MessageCircle } from "lucide-react";
 import { SERVICE_GROUPS, CONTACT } from "../../data/site";
 import { Reveal, MaskLines } from "./Reveal";
+import { useLanguage } from "../../context/LanguageContext";
+
+const GROUP_LABELS = {
+  es: {},
+  ca: {
+    masajes: "Massatges",
+    maderoterapia: "Maderoteràpia & Pressoteràpia",
+    radiofrecuencia: "Radiofreqüència",
+    terapias: "Teràpies de benestar",
+    estetica: "Estètica & Facial",
+    aparatologia: "Aparells estètics",
+  },
+  en: {
+    masajes: "Massage",
+    maderoterapia: "Wood therapy & Pressotherapy",
+    radiofrecuencia: "Radiofrequency",
+    terapias: "Wellness therapies",
+    estetica: "Beauty & Facial",
+    aparatologia: "Aesthetic technology",
+  },
+};
 
 export const Services = () => {
   const [active, setActive] = useState(SERVICE_GROUPS[0].id);
   const group = SERVICE_GROUPS.find((g) => g.id === active);
+  const { language, copy } = useLanguage();
 
   return (
     <section id="servicios" data-testid="services" className="py-24 md:py-36 bg-sand">
       <div className="max-w-7xl mx-auto px-5 md:px-10">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-14">
           <div>
-            <p className="overline mb-6">Servicios & Tarifas</p>
+            <p className="overline mb-6">{copy.services.eyebrow}</p>
             <h2 className="font-serif font-light text-forest text-6xl md:text-8xl leading-[0.98] tracking-tight">
-              <MaskLines lines={["Tratamientos", <span key="s">pensados para <em className="italic text-sage">ti</em></span>]} />
+              <MaskLines lines={[
+                copy.services.lines[0],
+                <span key={`${language}-services-line`}>{copy.services.lines[1].replace(/ ti$| tu$| you$/, "")} <em className="italic text-sage">{language === "es" ? "ti" : language === "ca" ? "tu" : "you"}</em></span>,
+              ]} />
             </h2>
           </div>
-          <p className="max-w-sm text-forest/60 leading-relaxed">
-            Consulta las tarifas actuales y reserva con cita previa. Si no sabes qué elegir, te asesoramos antes de confirmar.
-          </p>
+          <p className="max-w-sm text-forest/60 leading-relaxed">{copy.services.intro}</p>
         </div>
 
         <nav aria-label="Páginas de servicios" className="grid md:grid-cols-3 gap-4 mb-12">
-          <a href="/masajes-blanes/" className="group bg-cream border border-line rounded-[3px] p-6 hover:border-sage transition-colors">
-            <span className="overline">Masajes</span>
-            <span className="mt-3 flex items-center justify-between font-serif text-2xl text-forest">Masajes en Blanes <ArrowRight size={18} className="text-sage group-hover:translate-x-1 transition-transform" /></span>
-          </a>
-          <a href="/estetica-blanes/" className="group bg-cream border border-line rounded-[3px] p-6 hover:border-sage transition-colors">
-            <span className="overline">Facial y corporal</span>
-            <span className="mt-3 flex items-center justify-between font-serif text-2xl text-forest">Estética en Blanes <ArrowRight size={18} className="text-sage group-hover:translate-x-1 transition-transform" /></span>
-          </a>
-          <a href="/terapias-naturales-blanes/" className="group bg-cream border border-line rounded-[3px] p-6 hover:border-sage transition-colors">
-            <span className="overline">Bienestar</span>
-            <span className="mt-3 flex items-center justify-between font-serif text-2xl text-forest">Terapias naturales <ArrowRight size={18} className="text-sage group-hover:translate-x-1 transition-transform" /></span>
-          </a>
+          {[
+            { href: "/masajes-blanes/", copy: copy.services.cards[0] },
+            { href: "/estetica-blanes/", copy: copy.services.cards[1] },
+            { href: "/terapias-naturales-blanes/", copy: copy.services.cards[2] },
+          ].map((card) => (
+            <a key={card.href} href={card.href} className="group bg-cream border border-line rounded-[3px] p-6 hover:border-sage transition-colors">
+              <span className="overline">{card.copy[0]}</span>
+              <span className="mt-3 flex items-center justify-between font-serif text-2xl text-forest">{card.copy[1]} <ArrowRight size={18} className="text-sage group-hover:translate-x-1 transition-transform" /></span>
+            </a>
+          ))}
         </nav>
 
-        {/* Category tabs */}
         <div className="flex flex-wrap gap-3 mb-12">
           {SERVICE_GROUPS.map((g) => (
             <button
@@ -52,7 +72,7 @@ export const Services = () => {
                   : "bg-transparent text-forest/70 border-line hover:border-sage hover:text-sage"
               }`}
             >
-              {g.label}
+              {GROUP_LABELS[language]?.[g.id] || g.label}
             </button>
           ))}
         </div>
@@ -82,14 +102,14 @@ export const Services = () => {
                     target="_blank" rel="noreferrer"
                     className="inline-flex items-center gap-1.5 text-sage text-sm md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300"
                   >
-                    Reservar <MessageCircle size={14} />
+                    {copy.services.reserve} <MessageCircle size={14} />
                   </a>
                 </div>
               </div>
             ))}
           </div>
           <a href={group.landing} className="mt-8 inline-flex items-center gap-2 text-forest hover:text-sage transition-colors">
-            Ver información completa <ArrowRight size={16} />
+            {copy.services.more} <ArrowRight size={16} />
           </a>
         </Reveal>
       </div>
