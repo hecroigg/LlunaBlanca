@@ -16,6 +16,7 @@ import { ServicePage } from "./components/site/ServicePage";
 import { SERVICE_PAGES } from "./data/site";
 import { HomeStructuredData } from "./components/site/HomeStructuredData";
 import { CookieConsent } from "./components/site/CookieConsent";
+import { LanguageProvider } from "./context/LanguageContext";
 
 function App() {
   const pathname = window.location.pathname.endsWith("/")
@@ -23,36 +24,36 @@ function App() {
     : `${window.location.pathname}/`;
   const servicePage = SERVICE_PAGES[pathname];
 
-  if (servicePage) {
-    return (
-      <ReactLenis root options={{ lerp: 0.08, smoothWheel: true }}>
-        <ServicePage page={servicePage} />
-        <CookieConsent />
-      </ReactLenis>
-    );
-  }
-
   return (
-    <ReactLenis root options={{ lerp: 0.08, smoothWheel: true }}>
-      <div className="App bg-cream min-h-screen antialiased">
-        <HomeStructuredData />
-        <Navbar />
-        <main>
-          <Hero />
-          <Marquee />
-          <About />
-          <Services />
-          <Promos />
-          <Gallery />
-          <Testimonials />
-          <Contact />
-          <Faq />
-        </main>
-        <Footer />
-        <FloatingWhatsapp />
-        <CookieConsent />
-      </div>
-    </ReactLenis>
+    <LanguageProvider>
+      {servicePage ? (
+        <ReactLenis root options={{ lerp: 0.08, smoothWheel: true }}>
+          <ServicePage page={servicePage} />
+          <CookieConsent />
+        </ReactLenis>
+      ) : (
+        <ReactLenis root options={{ lerp: 0.08, smoothWheel: true }}>
+          <div className="App bg-cream min-h-screen antialiased">
+            <HomeStructuredData />
+            <Navbar />
+            <main>
+              <Hero />
+              <Marquee />
+              <About />
+              <Services />
+              <Promos />
+              <Gallery />
+              <Testimonials />
+              <Contact />
+              <Faq />
+            </main>
+            <Footer />
+            <FloatingWhatsapp />
+            <CookieConsent />
+          </div>
+        </ReactLenis>
+      )}
+    </LanguageProvider>
   );
 }
 
