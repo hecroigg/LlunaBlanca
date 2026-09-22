@@ -20,6 +20,10 @@ export const WellnessScene = ({ progress }) => {
   const rightHandRotate = useTransform(progress, [0, 0.5, 1], [0, -1.5, 0]);
   const rightHandScale = useTransform(progress, [0, 0.5, 1], [1, 0.985, 1]);
 
+  const backPressY = useTransform(progress, [0, 0.5, 1], [0, 4, 0]);
+  const backPressScale = useTransform(progress, [0, 0.5, 1], [1, 0.985, 1]);
+  const backPressOpacity = useTransform(progress, [0, 0.5, 1], [0.08, 0.16, 0.08]);
+
   return (
     <div
       role="img"
@@ -47,7 +51,7 @@ export const WellnessScene = ({ progress }) => {
 
         {!prefersReducedMotion && (
           <>
-            {/* Left hand and forearm. The feathered mask prevents hard crop edges. */}
+            {/* Left hand and forearm. Feathered masking avoids hard crop edges. */}
             <motion.div
               aria-hidden="true"
               style={{
@@ -99,14 +103,10 @@ export const WellnessScene = ({ progress }) => {
               />
             </motion.div>
 
-            {/* Tiny compression cue on the upper back to make the massage read more clearly. */}
+            {/* Subtle pressure cue on the upper back. */}
             <motion.div
               aria-hidden="true"
-              style={{
-                y: useTransform(progress, [0, 0.5, 1], [0, 4, 0]),
-                scaleY: useTransform(progress, [0, 0.5, 1], [1, 0.985, 1]),
-                opacity: useTransform(progress, [0, 0.5, 1], [0.08, 0.16, 0.08]),
-              }}
+              style={{ y: backPressY, scaleY: backPressScale, opacity: backPressOpacity }}
               className="absolute left-[30%] right-[18%] top-[27%] h-[28%] rounded-[50%] bg-forest/10 blur-xl pointer-events-none"
             />
           </>
