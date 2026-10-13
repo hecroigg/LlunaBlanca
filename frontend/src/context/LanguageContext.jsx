@@ -50,15 +50,8 @@ export const COPY = {
   },
 };
 
-export const LanguageProvider = ({ children }) => {
-  const [language, setLanguage] = useState(() => {
-    try {
-      const saved = localStorage.getItem("lluna-language");
-      return ["es", "ca", "en"].includes(saved) ? saved : "es";
-    } catch {
-      return "es";
-    }
-  });
+export const LanguageProvider = ({ children, initialLanguage = "es" }) => {
+  const [language, setLanguage] = useState(initialLanguage);
 
   useEffect(() => {
     document.documentElement.lang = language;

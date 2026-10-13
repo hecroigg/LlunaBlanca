@@ -36,6 +36,7 @@
     "@craco/craco": "7.1.0",
     "autoprefixer": "10.4.20",
     "dotenv": "16.4.5",
+    "esbuild": "^0.25.12",
     "eslint-plugin-react-hooks": "4.6.2",
     "postcss": "8.5.10",
     "tailwindcss": "3.4.17",
