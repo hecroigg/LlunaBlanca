@@ -1,63 +1,270 @@
 {
   "installCommand": "npm install",
-  "headers": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "Referrer-Policy",
-          "value": "strict-origin-when-cross-origin"
-        },
-        {
-          "key": "Permissions-Policy",
-          "value": "camera=(), microphone=(), geolocation=()"
-        }
-      ]
+      "src": "/(.*)",
+      "headers": {
+        "X-Content-Type-Options": "nosniff",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), microphone=(), geolocation=()"
+      },
+      "continue": true
     },
     {
-      "source": "/images/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
+      "src": "/images/(.*)",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "continue": true
     },
     {
-      "source": "/static/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
+      "src": "/fonts/(.*)",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "continue": true
     },
     {
-      "source": "/fonts/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        }
-      ]
-    }
-  ],
-  "trailingSlash": true,
-  "redirects": [
+      "src": "/static/(.*)",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "continue": true
+    },
     {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "llunablancablanes.com"
-        }
-      ],
-      "destination": "https://www.llunablancablanes.com/:path*",
-      "permanent": true
+      "src": "/terapias-naturales-blanes",
+      "status": 308,
+      "headers": {
+        "Location": "/terapias-naturales-blanes/"
+      }
+    },
+    {
+      "src": "/estetica-blanes",
+      "status": 308,
+      "headers": {
+        "Location": "/estetica-blanes/"
+      }
+    },
+    {
+      "src": "/aviso-legal",
+      "status": 308,
+      "headers": {
+        "Location": "/aviso-legal/"
+      }
+    },
+    {
+      "src": "/ca",
+      "status": 308,
+      "headers": {
+        "Location": "/ca/"
+      }
+    },
+    {
+      "src": "/en",
+      "status": 308,
+      "headers": {
+        "Location": "/en/"
+      }
+    },
+    {
+      "src": "/masajes-blanes",
+      "status": 308,
+      "headers": {
+        "Location": "/masajes-blanes/"
+      }
+    },
+    {
+      "src": "/privacidad",
+      "status": 308,
+      "headers": {
+        "Location": "/privacidad/"
+      }
+    },
+    {
+      "src": "/cookies",
+      "status": 308,
+      "headers": {
+        "Location": "/cookies/"
+      }
+    },
+    {
+      "src": "/estetica-blanes/limpieza-facial",
+      "status": 308,
+      "headers": {
+        "Location": "/estetica-blanes/limpieza-facial/"
+      }
+    },
+    {
+      "src": "/ca/massatges-blanes",
+      "status": 308,
+      "headers": {
+        "Location": "/ca/massatges-blanes/"
+      }
+    },
+    {
+      "src": "/ca/privacitat",
+      "status": 308,
+      "headers": {
+        "Location": "/ca/privacitat/"
+      }
+    },
+    {
+      "src": "/ca/estetica-blanes",
+      "status": 308,
+      "headers": {
+        "Location": "/ca/estetica-blanes/"
+      }
+    },
+    {
+      "src": "/ca/cookies",
+      "status": 308,
+      "headers": {
+        "Location": "/ca/cookies/"
+      }
+    },
+    {
+      "src": "/ca/avis-legal",
+      "status": 308,
+      "headers": {
+        "Location": "/ca/avis-legal/"
+      }
+    },
+    {
+      "src": "/ca/terapies-naturals-blanes",
+      "status": 308,
+      "headers": {
+        "Location": "/ca/terapies-naturals-blanes/"
+      }
+    },
+    {
+      "src": "/ca/massatges-blanes/descontracturant",
+      "status": 308,
+      "headers": {
+        "Location": "/ca/massatges-blanes/descontracturant/"
+      }
+    },
+    {
+      "src": "/ca/massatges-blanes/relaxant",
+      "status": 308,
+      "headers": {
+        "Location": "/ca/massatges-blanes/relaxant/"
+      }
+    },
+    {
+      "src": "/ca/estetica-blanes/higiene-facial",
+      "status": 308,
+      "headers": {
+        "Location": "/ca/estetica-blanes/higiene-facial/"
+      }
+    },
+    {
+      "src": "/en/legal-notice",
+      "status": 308,
+      "headers": {
+        "Location": "/en/legal-notice/"
+      }
+    },
+    {
+      "src": "/en/beauty-blanes",
+      "status": 308,
+      "headers": {
+        "Location": "/en/beauty-blanes/"
+      }
+    },
+    {
+      "src": "/en/privacy",
+      "status": 308,
+      "headers": {
+        "Location": "/en/privacy/"
+      }
+    },
+    {
+      "src": "/en/natural-therapies-blanes",
+      "status": 308,
+      "headers": {
+        "Location": "/en/natural-therapies-blanes/"
+      }
+    },
+    {
+      "src": "/en/cookies",
+      "status": 308,
+      "headers": {
+        "Location": "/en/cookies/"
+      }
+    },
+    {
+      "src": "/en/massage-blanes",
+      "status": 308,
+      "headers": {
+        "Location": "/en/massage-blanes/"
+      }
+    },
+    {
+      "src": "/en/beauty-blanes/facial-cleansing",
+      "status": 308,
+      "headers": {
+        "Location": "/en/beauty-blanes/facial-cleansing/"
+      }
+    },
+    {
+      "src": "/en/massage-blanes/relaxing",
+      "status": 308,
+      "headers": {
+        "Location": "/en/massage-blanes/relaxing/"
+      }
+    },
+    {
+      "src": "/en/massage-blanes/tension-release",
+      "status": 308,
+      "headers": {
+        "Location": "/en/massage-blanes/tension-release/"
+      }
+    },
+    {
+      "src": "/masajes-blanes/descontracturante",
+      "status": 308,
+      "headers": {
+        "Location": "/masajes-blanes/descontracturante/"
+      }
+    },
+    {
+      "src": "/masajes-blanes/relajante",
+      "status": 308,
+      "headers": {
+        "Location": "/masajes-blanes/relajante/"
+      }
+    },
+    {
+      "src": "/index.html",
+      "status": 308,
+      "headers": {
+        "Location": "/"
+      }
+    },
+    {
+      "src": "/(.*)/index.html",
+      "status": 308,
+      "headers": {
+        "Location": "/$1/"
+      }
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/ca/(.*)",
+      "dest": "/ca/404.html",
+      "status": 404
+    },
+    {
+      "src": "/en/(.*)",
+      "dest": "/en/404.html",
+      "status": 404
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/404.html",
+      "status": 404
     }
   ]
 }

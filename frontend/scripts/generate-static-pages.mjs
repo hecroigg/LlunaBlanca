@@ -60,8 +60,12 @@ async function emit(key,language,route) {
  items.push({key,language,url});
 }
 for(const [key,versions] of Object.entries(ROUTES)) for(const [language,route] of Object.entries(versions)) await emit(key,language,route);
-const notfound=template.replace('<div id="root"></div>',`<div id="root">${render('/page-not-found/')}</div>`).replace(/<title>.*?<\/title>/,'<title>404 | Lluna Blanca</title>').replace(/<meta name="robots"[^>]*>/,'<meta name="robots" content="noindex, follow"/>').replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g,'').replace(/<link rel="canonical"[^>]*>/,'');
-await writeFile(path.join(buildDir,'404.html'),notfound);
+for(const language of LANGUAGES) {
+ const missingPath=language==='es'?'/page-not-found/':`/${language}/page-not-found/`;
+ const notfound=template.replace(/<html lang="[^\"]+">/,`<html lang="${language}">`).replace('<div id="root"></div>',`<div id="root">${render(missingPath)}</div>`).replace(/<title>.*?<\/title>/,`<title>404 | Lluna Blanca</title>`).replace(/<meta name="robots"[^>]*>/,'<meta name="robots" content="noindex, follow"/>').replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g,'').replace(/<link rel="canonical"[^>]*>/,'').replace(/<link rel="preload" as="image"[^>]*>/,'').replace(/<noscript>[\s\S]*?<\/noscript>/,'');
+ const output=path.join(buildDir,language==='es'?'':language,'404.html');
+ await mkdir(path.dirname(output),{recursive:true});await writeFile(output,notfound);
+}
 const xml='<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">'+items.map(item=>`<url><loc>${item.url}</loc>${LANGUAGES.map(lang=>`<xhtml:link rel="alternate" hreflang="${lang}" href="${abs(routeFor(item.key,lang))}"/>`).join('')}<xhtml:link rel="alternate" hreflang="x-default" href="${abs(routeFor(item.key,'es'))}"/></url>`).join('')+'</urlset>';
 await writeFile(path.join(buildDir,'sitemap.xml'),xml);
 await writeFile(path.join(buildDir,'robots.txt'),`User-agent: *\nAllow: /\nSitemap: ${abs('/sitemap.xml')}\n`);

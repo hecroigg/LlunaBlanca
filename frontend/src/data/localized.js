@@ -133,7 +133,7 @@ const categoryTranslations = {
 };
 export function pageContent(key, language) {
  const ui = UI[language];
- if (key === 'home') return { title: COPY[language].hero.lines.join(' '), description: ui.heroDescription };
+ if (key === 'home') return { title: COPY[language].hero.lines.join(' ').replace(/\.$/, ''), description: ui.heroDescription };
  if (ui.legalTitles[key]) return { title: ui.legalTitles[key], description: `${ui.legalTitles[key]} · Lluna Blanca, ${CONTACT.addressFull}.` };
  const index = categoryKeys.indexOf(key);
  if (index !== -1) {
